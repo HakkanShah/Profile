@@ -11,7 +11,39 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #0a0a0a;
+    max-width: 100%;
+    padding: 5px 0;
+    text-align: center;
+   
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 10px cyan;
+}
+
+footer {
+    font-family: 'Courier New', Courier, monospace;
+    background-color:transparent;
+    max-width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    
+}
+
+footer p {
+    margin: 0;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .container {
@@ -19,7 +51,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 90%;
+    width: 75%;
     max-width: 400px;
     padding: 30px;
     border-radius: 15px;
@@ -55,10 +87,9 @@ h2 {
     color: rgba(0, 255, 255, 0.8);
     margin-bottom: 10px;
 }
-@import url('https://fonts.google.com/share?selection.family=Monoton');
+
 p {
     font-size: 1.2em;
-    
     color: rgba(255, 255, 255, 0.8);
 }
 
