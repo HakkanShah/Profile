@@ -15,7 +15,6 @@ body {
 }
 
 header {
-    position:relative;
     background-color: #0a0a0a;
     max-width: 100%;
     padding: 5px 0;
@@ -25,8 +24,7 @@ header {
 
 header h1 {
     margin: 10px;
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1em;
     color: rgb(255, 255, 255);
     text-shadow: 0 0 10px cyan;
 }
