@@ -67,6 +67,8 @@ footer p {
 }
 
 .container {
+    position: fixed;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -108,7 +110,7 @@ h1 {
     letter-spacing: 2px;
     color: hwb(0 0% 100%);
     text-shadow: 0 0 40px rgb(26, 243, 239);
-    animation: text-shadow-animation 1s infinite alternate;
+    animation: text-shadow-animation 2s infinite alternate;
 }
 
 h2 {
