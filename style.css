@@ -19,24 +19,52 @@ header {
     max-width: 100%;
     padding: 5px 0;
     text-align: center;
-   
+    animation: header-animation 2s infinite alternate;
+}
+
+@keyframes header-animation {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
 }
 
 header h1 {
     margin: 10px;
     font-size: 1em;
     color: rgb(255, 255, 255);
-    text-shadow: 0 0 10px cyan;
+    text-shadow: 0 0 10px rgb(24, 242, 242);
+    animation: text-shadow-animation 2s infinite alternate;
+}
+
+@keyframes text-shadow-animation {
+    0% {
+        text-shadow: 0 0 10px rgb(255, 255, 255);
+    }
+    100% {
+        text-shadow: 0 0 30px cyan;
+    }
 }
 
 footer {
-    background-color:transparent;
+    background-color: transparent;
     max-width: 100%;
     padding: 10px 0;
     text-align: center;
     position: fixed;
     bottom: 0;
-    
+    animation: footer-animation 2s infinite alternate;
+}
+
+@keyframes footer-animation {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
 }
 
 footer p {
@@ -59,6 +87,16 @@ footer p {
     box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(0, 255, 255, 0.3);
+    animation: container-animation 2s infinite alternate;
+}
+
+@keyframes container-animation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
 
 .profile-pic {
@@ -68,29 +106,40 @@ footer p {
     border: 3px solid cyan;
     box-shadow: 0 0 15px cyan;
     transition: transform 0.3s ease-in-out;
+    animation: profile-pic-animation 2s infinite alternate;
 }
 
-.profile-pic:hover {
-    transform: scale(1.1);
+@keyframes profile-pic-animation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
 
 h1 {
     font-size: 2.5em;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: cyan;
-    text-shadow: 0 0 10px cyan;
+    color: hwb(0 0% 100%);
+    text-shadow: 0 0 40px rgb(26, 243, 239);
+    animation: text-shadow-animation 1s infinite alternate;
 }
 
 h2 {
     font-size: 1.3em;
     color: rgba(0, 255, 255, 0.8);
-    margin-bottom: 10px;
+    margin-bottom: 40px;
+    animation: text-shadow-animation 2s infinite alternate;
 }
 
 p {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.2em;
+    margin-bottom: 40px;
     color: rgba(255, 255, 255, 0.8);
+    animation: text-shadow-animation 2s infinite alternate;
 }
 
 .btn {
@@ -109,6 +158,16 @@ p {
     backdrop-filter: blur(10px);
     border: 2px solid cyan;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    animation: btn-animation 2s infinite alternate;
+}
+
+@keyframes btn-animation {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
 }
 
 .btn img {
@@ -120,13 +179,37 @@ p {
 
 .github {
     background: linear-gradient(135deg, #0d0d0d, #202020);
+    animation: neon-glow 2s infinite alternate;
 }
 
 .linkedin {
     background: linear-gradient(135deg, #0033cc, #001f99);
+    animation: neon-glow 2s infinite alternate;
 }
 
 .btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 25px cyan;
+    animation: btn-hover-animation 2s infinite alternate;
+}
+
+@keyframes btn-hover-animation {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes neon-glow {
+    0% {
+        box-shadow: 0 0 10px cyan;
+    }
+    50% {
+        box-shadow: 0 0 20px cyan;
+    }
+    100% {
+        box-shadow: 0 0 10px cyan;
+    }
 }
