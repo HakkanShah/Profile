@@ -58,14 +58,6 @@ footer {
     animation: footer-animation 2s infinite alternate;
 }
 
-@keyframes footer-animation {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(-10px);
-    }
-}
 
 footer p {
     font-family: sans-serif;
@@ -90,14 +82,6 @@ footer p {
     animation: container-animation 2s infinite alternate;
 }
 
-@keyframes container-animation {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.1);
-    }
-}
 
 .profile-pic {
     width: 120px;
