@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (body.classList.contains('light-theme')) {
             body.classList.remove('light-theme');
             body.classList.add('dark-theme');
-            themeIcon.textContent = '🌙';
+            themeIcon.textContent = '🌛';
         } else {
             body.classList.remove('dark-theme');
             body.classList.add('light-theme');
-            themeIcon.textContent = '☀️';
+            themeIcon.textContent = '🌞';
         }
     });
 });
