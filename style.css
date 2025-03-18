@@ -19,14 +19,12 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color:transparent;
+    background-color: transparent;
     max-width: 100%;
     padding: 5px 0;
     text-align: center;
     animation: header-animation 2s infinite alternate;
 }
-
-
 
 @keyframes header-animation {
     0% {
@@ -44,6 +42,7 @@ header h1 {
     text-shadow: 0 0 10px rgb(24, 242, 242);
     animation: text-shadow-animation 2s infinite alternate;
 }
+
 @keyframes text-shadow-animation {
     0% {
         text-shadow: 0 0 10px rgb(255, 255, 255);
@@ -63,13 +62,11 @@ footer {
     animation: footer-animation 2s infinite alternate;
 }
 
-
 footer p {
     font-family: sans-serif;
     margin: 0;
     font-size: 1em;
     color: rgba(255, 255, 255, 0.8);
-    bottom: 0;
 }
 
 .container {
@@ -89,7 +86,6 @@ footer p {
     border: 1px solid rgba(0, 255, 255, 0.3);
     animation: container-animation 2s infinite alternate;
 }
-
 
 .profile-pic {
     width: 120px;
@@ -127,7 +123,7 @@ h2 {
 }
 
 p {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1.2em;
     margin-bottom: 40px;
     color: rgba(255, 255, 255, 0.8);
@@ -204,4 +200,54 @@ p {
     100% {
         box-shadow: 0 0 10px cyan;
     }
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
+}
+
+body.light-theme {
+    background: radial-gradient(circle at top, #ffffff, #e0e0e0);
+    color: black;
+}
+
+body.light-theme header h1,
+body.light-theme footer p,
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme p {
+    color: black;
+    text-shadow: none;
+}
+
+body.light-theme .container {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+body.light-theme .profile-pic {
+    border: 3px solid black;
+    box-shadow: 0 0 15px black;
+}
+
+body.light-theme .btn {
+    border: 2px solid black;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+body.light-theme .linkedin {
+    background: linear-gradient(135deg, #0073b1, #005582);
 }
