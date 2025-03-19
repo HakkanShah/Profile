@@ -116,7 +116,7 @@ footer p {
 
 .slider:before {
     position: absolute;
-    content: '\263D'; /* Half Moon symbol */
+    content: '🌚';
     height: 18px;
     width: 18px;
     left: 4px;
