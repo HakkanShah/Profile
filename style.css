@@ -86,6 +86,57 @@ footer p {
     border: 1px solid rgba(0, 255, 255, 0.3);
     animation: container-animation 2s infinite alternate;
 }
+/* Theme Toggle Switch */
+.switch {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: '\1F31A'; /* Moon symbol */
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+}
+
+input:checked + .slider {
+    background-color: #fbc02d;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+    content: '\2600'; /* Sun symbol */
+}
 
 .profile-pic {
     width: 120px;
