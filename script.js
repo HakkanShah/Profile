@@ -14,12 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('theme', 'light');
         } else {
             body.classList.remove('light-theme');
-            body.classList.add('dark-theme');
-            themeIcon.textContent = '🌙';
-        } else {
-            body.classList.remove('dark-theme');
-            body.classList.add('light-theme');
-            themeIcon.textContent = '☀️';
+            localStorage.setItem('theme', 'dark');
         }
     });
 });
