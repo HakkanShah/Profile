@@ -288,15 +288,7 @@ body.light-theme .btn img {
     transform: scale(1.2);
 }
 
-.github {
-    background: linear-gradient(135deg, #0d0d0d, #202020);
-    animation: neon-glow 2s infinite alternate;
-}
 
-.linkedin {
-    background: linear-gradient(135deg, #0033cc, #001f99);
-    animation: neon-glow 2s infinite alternate;
-}
 
 @keyframes neon-glow {
     0% {
