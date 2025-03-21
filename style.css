@@ -130,8 +130,8 @@ p {
     right: 20px;
     z-index: 1001;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 50px;
+    height: 28px;
 }
 
 .switch input {
@@ -157,16 +157,16 @@ p {
 .slider:before {
     position: absolute;
     content: '🌚';
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
     background-color: white;
     transition: .4s;
     border-radius: 50%;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
-    line-height: 26px;
+    line-height: 22px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -177,7 +177,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(22px);
     content: '☀️';
     background-color: #fbc02d;
 }
@@ -207,8 +207,10 @@ footer {
 }
 
 footer p {
+    font-family: Arial, sans-serif;
     font-size: clamp(0.8rem, 1.5vw, 1rem);
     margin: 0;
+    font-weight: normal;
 }
 
 /* Light Theme */
