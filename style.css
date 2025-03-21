@@ -31,7 +31,7 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: transparent;
     backdrop-filter: blur(10px);
     padding: 15px 0;
     z-index: 1000;
@@ -131,7 +131,7 @@ p {
     z-index: 1001;
     display: inline-block;
     width: 50px;
-    height: 28px;
+    height: 30px;
 }
 
 .switch input {
@@ -164,7 +164,7 @@ p {
     background-color: white;
     transition: .4s;
     border-radius: 50%;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     line-height: 22px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
@@ -201,7 +201,7 @@ footer {
     margin-top: auto;
     padding: 20px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color:transparent;
     backdrop-filter: blur(10px);
     width: 100%;
 }
@@ -221,7 +221,7 @@ body.light-theme {
 
 body.light-theme header,
 body.light-theme footer {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
 }
 
 body.light-theme .container {
@@ -288,7 +288,15 @@ body.light-theme .btn img {
     transform: scale(1.2);
 }
 
+.github {
+    background: linear-gradient(135deg, #0d0d0d, #202020);
+    animation: neon-glow 2s infinite alternate;
+}
 
+.linkedin {
+    background: linear-gradient(135deg, #0033cc, #001f99);
+    animation: neon-glow 2s infinite alternate;
+}
 
 @keyframes neon-glow {
     0% {
