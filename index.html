@@ -3,166 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkan | Portfolio</title>
+    <title>Hakkan | Profile</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <!-- 3D Mouse Trailer -->
+    <div class="mouse-trailer"></div>
 
-    <nav class="navbar">
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <div class="gradient-sphere"></div>
+        <div class="noise-overlay"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-wrapper">
         <div class="nav-content">
-            <div class="logo">
-                <a href="#home">YN</a>
+            <div class="logo-container">
+                <div class="logo-glitch" data-text="H">H</div>
+                <div class="logo-text">akkan</div>
             </div>
-            <div class="nav-links">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="theme-toggle">
-                <label class="switch">
-                    <input type="checkbox" id="theme-switch">
-                    <span class="slider"></span>
-                </label>
+            <div class="nav-menu">
+                <div class="menu-item" data-text="Home">Home</div>
+                <div class="menu-item" data-text="About">About</div>
+                <div class="menu-item" data-text="Contact">Contact</div>
+                <div class="theme-switch">
+                    <div class="switch-track">
+                        <div class="switch-thumb"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="glitch" data-text="Hello, I'm">Hello, I'm</h1>
-                    <h2 class="name">Hakkan</h2>
-                    <p class="title">Full Stack Developer</p>
-                    <div class="cta-buttons">
-                        <a href="#projects" class="btn primary">View Projects</a>
-                        <a href="#contact" class="btn secondary">Contact Me</a>
-                    </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-text-container">
+                <div class="hero-subtitle">Digital Artist & Developer</div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">Creating</span>
+                    <span class="glitch-text" data-text="Digital">Digital</span>
+                    <span class="gradient-text">Magic</span>
+                </h1>
+                <div class="hero-description">
+                    <p class="typewriter">Transforming ideas into immersive digital experiences</p>
                 </div>
-                <div class="hero-image">
-                    <div class="image-container">
-                        <img src="profile.jpg" alt="Hakkan">
-                        <div class="image-overlay"></div>
-                    </div>
+                <div class="cta-container">
+                    <button class="cta-button primary">
+                        <span class="button-text">Explore My Work</span>
+                        <div class="button-particles"></div>
+                    </button>
+                    <button class="cta-button secondary">
+                        <span class="button-text">Let's Connect</span>
+                        <div class="button-glow"></div>
+                    </button>
                 </div>
             </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="section-content">
-                <h2 class="section-title">About Me</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>I'm a passionate Full Stack Developer with expertise in creating beautiful and functional web applications. I love turning complex problems into simple, beautiful, and intuitive solutions.</p>
-                        <div class="skills">
-                            <h3>Skills</h3>
-                            <div class="skill-tags">
-                                <span>HTML5</span>
-                                <span>CSS3</span>
-                                <span>JavaScript</span>
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>Python</span>
-                            </div>
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <div class="profile-card">
+                        <div class="profile-image-wrapper">
+                            <img src="profile.jpg" alt="Hakkan" class="profile-image">
+                            <div class="image-glitch-effect"></div>
                         </div>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">3+</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">20+</span>
-                            <span class="stat-label">Projects Completed</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">15+</span>
-                            <span class="stat-label">Happy Clients</span>
+                        <div class="floating-elements">
+                            <div class="tech-pill" style="--delay: 0s">React</div>
+                            <div class="tech-pill" style="--delay: 0.2s">Node.js</div>
+                            <div class="tech-pill" style="--delay: 0.4s">Three.js</div>
+                            <div class="tech-pill" style="--delay: 0.6s">WebGL</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="projects" class="projects">
-            <div class="section-content">
-                <h2 class="section-title">My Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <img src="project1.jpg" alt="Project 1">
-                            <div class="project-overlay">
-                                <div class="project-links">
-                                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                                    <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-info">
-                            <h3>Project Name</h3>
-                            <p>Project description goes here. Brief overview of what the project does and what technologies were used.</p>
-                            <div class="project-tags">
-                                <span>React</span>
-                                <span>Node.js</span>
-                                <span>MongoDB</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add more project cards as needed -->
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <div class="section-content">
-                <h2 class="section-title">Get In Touch</h2>
-                <div class="contact-content">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>your.email@example.com</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+1 234 567 890</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Your Location</span>
-                        </div>
-                    </div>
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-links">
-                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            </div>
-            <p>&copy; 2024 Hakkan. All rights reserved.</p>
         </div>
-    </footer>
+    </section>
 
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="section-content">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title">
+                        <span class="title-line">About</span>
+                        <span class="title-line">My Journey</span>
+                    </h2>
+                    <p class="about-description">Digital artist and developer with a passion for creating immersive web experiences. Specializing in creative coding and interactive design.</p>
+                    <div class="skill-container">
+                        <div class="skill-category">
+                            <h3>Creative Development</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">WebGL</span>
+                                <span class="skill-tag">Three.js</span>
+                                <span class="skill-tag">GSAP</span>
+                                <span class="skill-tag">Canvas</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Frontend Mastery</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Vue</span>
+                                <span class="skill-tag">Next.js</span>
+                                <span class="skill-tag">TypeScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="experience-cards">
+                        <div class="exp-card" style="--index: 0">
+                            <div class="card-content">
+                                <span class="exp-number">3+</span>
+                                <span class="exp-label">Years of Experience</span>
+                            </div>
+                        </div>
+                        <div class="exp-card" style="--index: 1">
+                            <div class="card-content">
+                                <span class="exp-number">20+</span>
+                                <span class="exp-label">Projects Completed</span>
+                            </div>
+                        </div>
+                        <div class="exp-card" style="--index: 2">
+                            <div class="card-content">
+                                <span class="exp-number">15+</span>
+                                <span class="exp-label">Happy Clients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="section-content">
+            <h2 class="section-title">
+                <span class="gradient-text">Let's Create</span>
+                <span class="glitch-text" data-text="Together">Together</span>
+            </h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="card-text">
+                            <h3>Email Me At</h3>
+                            <p>hakkan@example.com</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="card-text">
+                            <h3>Based In</h3>
+                            <p>Mumbai, India</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon" data-platform="github">
+                            <i class="fab fa-github"></i>
+                            <div class="icon-glow"></div>
+                        </a>
+                        <a href="#" class="social-icon" data-platform="linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                            <div class="icon-glow"></div>
+                        </a>
+                        <a href="#" class="social-icon" data-platform="twitter">
+                            <i class="fab fa-twitter"></i>
+                            <div class="icon-glow"></div>
+                        </a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <div class="input-container">
+                            <input type="text" id="name" required>
+                            <label for="name">Your Name</label>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-container">
+                            <input type="email" id="email" required>
+                            <label for="email">Your Email</label>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-container">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                            <div class="input-line"></div>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <span class="button-text">Send Message</span>
+                        <div class="button-particles"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
