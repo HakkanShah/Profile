@@ -86,7 +86,7 @@ footer p {
     border: 1px solid rgba(0, 255, 255, 0.3);
     animation: container-animation 2s infinite alternate;
 }
-/* Theme Toggle Switch */
+
 .switch {
     position: absolute;
     top: 10px;
