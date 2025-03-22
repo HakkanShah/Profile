@@ -14,79 +14,20 @@ body {
     min-height: 100vh;
 }
 
+/* Header */
 header {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    max-width: 100%;
-    padding: 5px 0;
-    text-align: center;
-    animation: header-animation 2s infinite alternate;
-}
-
-@keyframes header-animation {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(10px);
-    }
-}
-
-header h1 {
-    margin: 10px;
-    font-size: 1em;
-    color: rgb(255, 255, 255);
-    text-shadow: 0 0 10px rgb(24, 242, 242);
-    animation: text-shadow-animation 2s infinite alternate;
-}
-
-@keyframes text-shadow-animation {
-    0% {
-        text-shadow: 0 0 10px rgb(255, 255, 255);
-    }
-    100% {
-        text-shadow: 0 0 30px cyan;
-    }
-}
-
-footer {
-    background-color: transparent;
-    max-width: 100%;
+    width: 100%;
     padding: 10px 0;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    animation: footer-animation 2s infinite alternate;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 0 0 10px cyan;
+    animation: glow 2s infinite alternate;
 }
 
-footer p {
-    font-family: sans-serif;
-    margin: 0;
-    font-size: 1em;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.container {
-    position: fixed;
-    top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 75%;
-    max-width: 400px;
-    padding: 30px;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    animation: container-animation 2s infinite alternate;
-}
-
+/* Theme Toggle */
 .switch {
     position: absolute;
     top: 10px;
@@ -138,6 +79,21 @@ input:checked + .slider:before {
     content: '\2600'; /* Sun symbol */
 }
 
+/* Profile Card */
+.container {
+    position: fixed;
+    top: 60px;
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    text-align: center;
+}
+
 .profile-pic {
     width: 120px;
     height: 120px;
@@ -145,40 +101,39 @@ input:checked + .slider:before {
     border: 3px solid cyan;
     box-shadow: 0 0 15px cyan;
     transition: transform 0.3s ease-in-out;
-    animation: profile-pic-animation 2s infinite alternate;
+    animation: float 2s infinite alternate;
 }
 
-@keyframes profile-pic-animation {
+@keyframes float {
     0% {
-        transform: scale(1);
+        transform: translateY(0);
     }
     100% {
-        transform: scale(1.1);
+        transform: translateY(5px);
     }
 }
 
 h1 {
-    font-size: 2.5em;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: hwb(0 0% 100%);
-    text-shadow: 0 0 40px rgb(26, 243, 239);
-    animation: text-shadow-animation 2s infinite alternate;
+    font-size: 2em;
+    color: white;
+    text-shadow: 0 0 20px cyan;
 }
 
 h2 {
-    font-size: 1.3em;
-    color: rgba(0, 255, 255, 0.8);
-    margin-bottom: 40px;
-    animation: text-shadow-animation 2s infinite alternate;
+    font-size: 1.2em;
+    color: cyan;
 }
 
 p {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 1.2em;
-    margin-bottom: 40px;
+    font-size: 1.1em;
     color: rgba(255, 255, 255, 0.8);
-    animation: text-shadow-animation 2s infinite alternate;
+}
+
+/* Buttons */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .btn {
@@ -191,22 +146,10 @@ p {
     font-weight: bold;
     padding: 12px 25px;
     border-radius: 30px;
-    margin: 10px;
     transition: all 0.3s ease-in-out;
-    position: relative;
     backdrop-filter: blur(10px);
     border: 2px solid cyan;
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
-    animation: btn-animation 2s infinite alternate;
-}
-
-@keyframes btn-animation {
-    0% {
-        transform: scale(1);
-    }
-    100% {
-        transform: scale(1.1);
-    }
 }
 
 .btn img {
@@ -218,57 +161,29 @@ p {
 
 .github {
     background: linear-gradient(135deg, #0d0d0d, #202020);
-    animation: neon-glow 2s infinite alternate;
 }
 
 .linkedin {
     background: linear-gradient(135deg, #0033cc, #001f99);
-    animation: neon-glow 2s infinite alternate;
 }
 
 .btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 25px cyan;
-    animation: btn-hover-animation 2s infinite alternate;
 }
 
-@keyframes btn-hover-animation {
-    0% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1.2);
-    }
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
 }
 
-@keyframes neon-glow {
-    0% {
-        box-shadow: 0 0 10px cyan;
-    }
-    50% {
-        box-shadow: 0 0 20px cyan;
-    }
-    100% {
-        box-shadow: 0 0 10px cyan;
-    }
-}
-
-.theme-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-}
-
-.theme-toggle:hover {
-    transform: scale(1.2);
-}
-
+/* Light Theme */
 body.light-theme {
     background: radial-gradient(circle at top, #ffffff, #e0e0e0);
     color: black;
