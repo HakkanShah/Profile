@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hakkan's Profile</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- 3D Mouse Trailer -->
@@ -34,8 +35,23 @@
                     </div>
                 </div>
             </div>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="menu-item" data-text="Home">Home</div>
+        <div class="menu-item" data-text="About">About</div>
+        <div class="menu-item" data-text="Contact">Contact</div>
+        <div class="theme-switch">
+            <div class="switch-track">
+                <div class="switch-thumb"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -223,6 +239,8 @@
         <p>Made with ❤️ by <a href="https://github.com/HakkanShah">Hakkan</a></p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -8,6 +8,35 @@ let mouseY = 0;
 let trailerX = 0;
 let trailerY = 0;
 
+// Mobile Menu
+function initMobileMenu() {
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuItems = document.querySelectorAll('.mobile-menu .menu-item');
+
+    if (!mobileMenuToggle || !mobileMenu) return;
+
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        mobileMenuToggle.classList.toggle('active');
+    });
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+        });
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            mobileMenuToggle.classList.remove('active');
+        }
+    });
+}
+
 // Initialize mouse trailer
 function initMouseTrailer() {
     if (!mouseTrailer) return;
@@ -283,6 +312,7 @@ function initHoverEffects() {
 
 // Initialize all features
 document.addEventListener('DOMContentLoaded', () => {
+    initMobileMenu();
     initMouseTrailer();
     initThemeSwitch();
     initProfileCard();
