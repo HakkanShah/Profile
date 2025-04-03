@@ -1,10 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
-body {
-    font-family: 'Orbitron', sans-serif;
-    text-align: center;
-    background: radial-gradient(circle at top, #0a0a0a, #010101);
-    color: white;
+:root {
+    /* Core Colors */
+    --primary: #3182ce;
+    --secondary: #2b6cb0;
+    --accent: #4299e1;
+    --background: #1a202c;
+    --surface: #2d3748;
+    --text: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    /* Gradients */
+    --gradient-1: linear-gradient(45deg, #3182ce, #4299e1);
+    --gradient-2: linear-gradient(135deg, #2b6cb0, #3182ce);
+    --gradient-glow: linear-gradient(45deg, 
+        rgba(49, 130, 206, 0.5),
+        rgba(66, 153, 225, 0.5));
+    
+    /* Effects */
+    --blur-sm: blur(8px);
+    --blur-md: blur(16px);
+    --blur-lg: blur(24px);
+    
+    /* Animations */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Dimensions */
+    --header-height: 80px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 16px;
+    --border-radius-lg: 24px;
+}
+
+[data-theme="light"] {
+    --background: #f7fafc;
+    --surface: #edf2f7;
+    --text: #1a202c;
+    --text-secondary: rgba(26, 32, 44, 0.7);
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,16 +54,14 @@ body {
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
-    background: var(--background);
-    color: var(--text);
 }
 
 body {
     font-family: 'Space Grotesk', sans-serif;
+    background: var(--background);
+    color: var(--text);
     line-height: 1.6;
     overflow-x: hidden;
-    transition: background-color var(--transition-normal);
 }
 
 /* Animated Background */
@@ -69,22 +109,6 @@ body {
     opacity: 0.03;
 }
 
-/* 3D Mouse Trailer */
-.mouse-trailer {
-    position: fixed;
-    width: 30px;
-    height: 30px;
-    border: 2px solid var(--primary);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0;
-    transition: opacity var(--transition-fast),
-                transform var(--transition-fast);
-    transform-style: preserve-3d;
-    perspective: 800px;
-}
-
 /* Navigation */
 .nav-wrapper {
     position: fixed;
@@ -104,42 +128,65 @@ body {
     padding: 0 2rem;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
 }
 
-/* Header */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 0 0 10px cyan;
-    animation: glow 2s infinite alternate;
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Theme Toggle */
-.switch {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: inline-block;
+.logo-glitch {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    animation: glitch 5s infinite;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.menu-item {
+    position: relative;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: color var(--transition-normal);
+}
+
+.menu-item:hover {
+    color: var(--text);
+}
+
+/* Theme Switch */
+.theme-switch {
+    position: relative;
     width: 50px;
     height: 26px;
+    cursor: pointer;
 }
 
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+.switch-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--surface);
+    border-radius: 34px;
+    transition: background var(--transition-normal);
 }
 
-.slider {
+.switch-thumb {
     position: absolute;
     left: 2px;
     top: 2px;
@@ -179,9 +226,6 @@ header {
     font-size: 1.2rem;
     color: var(--text-secondary);
     margin-bottom: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.5s var(--transition-normal) forwards;
 }
 
 .hero-title {
@@ -231,16 +275,30 @@ header {
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
+    overflow: hidden;
 }
 
-.slider:before {
+.cta-button.primary {
+    background: var(--gradient-1);
+    color: white;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--text);
+}
+
+.button-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.button-glow {
     position: absolute;
     top: 0;
     left: 0;
@@ -439,17 +497,14 @@ header {
     justify-content: center;
     font-size: 1.5rem;
     color: white;
-    text-shadow: 0 0 20px cyan;
 }
 
-h2 {
-    font-size: 1.2em;
-    color: cyan;
+.card-text h3 {
+    margin-bottom: 0.5rem;
 }
 
-p {
-    font-size: 1.1em;
-    color: rgba(255, 255, 255, 0.8);
+.card-text p {
+    color: var(--text-secondary);
 }
 
 .social-links {
@@ -503,23 +558,35 @@ p {
     margin-bottom: 2rem;
 }
 
-.github {
-    background: linear-gradient(135deg, #0d0d0d, #202020);
+.input-container {
+    position: relative;
 }
 
-.linkedin {
-    background: linear-gradient(135deg, #0033cc, #001f99);
+.input-container input,
+.input-container textarea {
+    width: 100%;
+    padding: 1rem 0;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 1rem;
+    font-family: inherit;
 }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px cyan;
+.input-container label {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    color: var(--text-secondary);
+    transition: transform var(--transition-normal),
+                color var(--transition-normal);
+    pointer-events: none;
 }
 
-/* Footer */
-footer {
-    position: fixed;
+.input-line {
+    position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     height: 2px;
     background: var(--text-secondary);
@@ -552,6 +619,18 @@ footer {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+}
+
+/* Footer */
+footer {
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+footer a {
+    color: var(--primary);
+    text-decoration: none;
 }
 
 /* Animations */
@@ -608,17 +687,6 @@ footer {
 @keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: var(--primary) }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 @keyframes slideIn {
