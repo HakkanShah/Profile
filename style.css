@@ -19,6 +19,7 @@
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 15px rgba(99, 102, 241, 0.5);
     
     /* Transitions */
     --transition-fast: 0.2s ease;
@@ -97,8 +98,11 @@ body {
     color: var(--text);
 }
 
-.brand-dot {
-    color: var(--primary);
+.brand-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .nav-links {
@@ -207,10 +211,15 @@ body {
     align-items: center;
 }
 
+.hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .hero-title {
     font-size: 4rem;
     line-height: 1.2;
-    margin-bottom: 1.5rem;
 }
 
 .gradient-text {
@@ -227,7 +236,6 @@ body {
 .hero-subtitle {
     font-size: 1.2rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
 }
 
 .hero-cta {
@@ -341,10 +349,15 @@ body {
     align-items: center;
 }
 
+.about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 .about-description {
     font-size: 1.1rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
 }
 
 .stats-grid {
@@ -700,86 +713,4 @@ body {
     .btn:hover {
         transform: none;
     }
-}
-/* 🔥 ANIMATIONS & GLOW UPS - ADD-ON ONLY */
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes glowText {
-  0% {
-    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 15px #0ff;
-  }
-  100% {
-    text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-  }
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* ✨ Add glowing effect to all headings */
-h1, h2, h3 {
-  animation: glowText 2s ease-in-out infinite alternate;
-}
-
-/* ✨ Fade-in animation to content blocks */
-section, .content, .box, .card {
-  animation: fadeInUp 1s ease forwards;
-}
-
-/* ✨ Smooth hover glow for links and buttons */
-a:hover, button:hover {
-  transition: 0.3s ease-in-out;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
-  transform: scale(1.05);
-}
-
-/* ✨ Background shimmer overlay */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  pointer-events: none;
-  background: linear-gradient(130deg, transparent 25%, rgba(255,255,255,0.05) 50%, transparent 75%);
-  animation: shimmer 10s infinite linear;
-  z-index: -1;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-/* ✨ Optional: Add floating animation to icons or avatars */
-img.icon, .avatar, .profile-pic {
-  animation: floaty 6s ease-in-out infinite;
-}
-
-@keyframes floaty {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
