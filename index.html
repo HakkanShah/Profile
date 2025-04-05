@@ -3,157 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkan's Profile</title>
+    <title>Hakkan | MERN Stack Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- 3D Mouse Trailer -->
-    <div class="mouse-trailer"></div>
-
-    <!-- Animated Background -->
-    <div class="animated-background">
-        <div class="gradient-sphere"></div>
-        <div class="noise-overlay"></div>
-        <div class="grid-overlay"></div>
-    </div>
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
     <!-- Navigation -->
-    <nav class="nav-wrapper">
-        <div class="nav-content">
-            <div class="logo-container">
-                <div class="logo-glitch" data-text="H">H</div>
-                <div class="logo-text">akkan</div>
-            </div>
-            <div class="nav-menu">
-                <div class="menu-item" data-text="Home">Home</div>
-                <div class="menu-item" data-text="About">About</div>
-                <div class="menu-item" data-text="Contact">Contact</div>
-                <div class="theme-switch">
-                    <div class="switch-track">
-                        <div class="switch-thumb"></div>
-                    </div>
-                </div>
-            </div>
-            <button class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="brand-text">Hakkan Parbej Shah</span>
         </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <button class="theme-toggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu">
-        <div class="menu-item" data-text="Home">Home</div>
-        <div class="menu-item" data-text="About">About</div>
-        <div class="menu-item" data-text="Contact">Contact</div>
-        <div class="theme-switch">
-            <div class="switch-track">
-                <div class="switch-thumb"></div>
-            </div>
+        <div class="mobile-menu-content">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#contact" class="mobile-link">Contact</a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text-container">
-                <div class="hero-subtitle">Full Stack MERN Developer</div>
+            <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="gradient-text">Building</span>
-                    <span class="glitch-text" data-text="Scalable">Scalable</span>
-                    <span class="gradient-text">Solutions</span>
+                    <span class="gradient-text">MERN Stack</span>
+                    <span class="highlight-text">Developer</span>
                 </h1>
-                <div class="hero-description">
-                    <p class="typewriter">Crafting robust web applications with MongoDB, Express, React, and Node.js</p>
-                </div>
-                <div class="cta-container">
-                    <button class="cta-button primary">
-                        <span class="button-text">View Projects</span>
-                        <div class="button-particles"></div>
-                    </button>
-                    <button class="cta-button secondary">
-                        <span class="button-text">Get In Touch</span>
-                        <div class="button-glow"></div>
-                    </button>
+                <p class="hero-subtitle">Building scalable web applications with modern technologies</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="profile-container">
-                    <div class="profile-card">
-                        <div class="profile-image-wrapper">
-                            <img src="profile.jpg" alt="Hakkan" class="profile-image">
-                            <div class="image-glitch-effect"></div>
+                <div class="tech-stack">
+                    <div class="tech-item" data-tech="MongoDB">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="tech-item" data-tech="Express">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <div class="tech-item" data-tech="React">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <div class="tech-item" data-tech="Node.js">
+                        <i class="fab fa-node"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="section-content">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p class="about-description">
+                        I'm a passionate MERN Stack Developer with 1+ years of experience in building 
+                        modern web applications. I specialize in creating scalable solutions using 
+                        MongoDB, Express.js, React, and Node.js.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">Years Experience</span>
                         </div>
-                        <div class="floating-elements">
-                            <div class="tech-pill" style="--delay: 0s">MongoDB</div>
-                            <div class="tech-pill" style="--delay: 0.2s">Express.js</div>
-                            <div class="tech-pill" style="--delay: 0.4s">React</div>
-                            <div class="tech-pill" style="--delay: 0.6s">Node.js</div>
+                        <div class="stat-card">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects Completed</span>
                         </div>
+                        <div class="stat-card">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-container">
+                        <img src="profile.jpg" alt="Hakkan" class="profile-image">
+                        <div class="image-overlay"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
         <div class="section-content">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2 class="section-title">
-                        <span class="title-line">About Me</span>
-                        <span class="title-line">& My Expertise</span>
-                    </h2>
-                    <p class="about-description">Full Stack Developer specializing in MERN stack development. Passionate about building scalable web applications and RESTful APIs. Experienced in modern JavaScript development and cloud deployment.</p>
-                    <div class="skill-container">
-                        <div class="skill-category">
-                            <h3>Backend Development</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Node.js</span>
-                                <span class="skill-tag">Express.js</span>
-                                <span class="skill-tag">MongoDB</span>
-                                <span class="skill-tag">REST APIs</span>
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="category-title">Backend</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Node.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
-                        <div class="skill-category">
-                            <h3>Frontend Mastery</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">React</span>
-                                <span class="skill-tag">Redux</span>
-                                <span class="skill-tag">Next.js</span>
-                                <span class="skill-tag">TypeScript</span>
+                        <div class="skill-item">
+                            <span class="skill-name">Express.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
-                        <div class="skill-category">
-                            <h3>Tools & DevOps</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Git</span>
-                                <span class="skill-tag">Docker</span>
-                                <span class="skill-tag">AWS</span>
-                                <span class="skill-tag">CI/CD</span>
+                        <div class="skill-item">
+                            <span class="skill-name">MongoDB</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-visual">
-                    <div class="experience-cards">
-                        <div class="exp-card" style="--index: 0">
-                            <div class="card-content">
-                                <span class="exp-number">4+</span>
-                                <span class="exp-label">Years of Experience</span>
+                <div class="skill-category">
+                    <h3 class="category-title">Frontend</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
                             </div>
                         </div>
-                        <div class="exp-card" style="--index: 1">
-                            <div class="card-content">
-                                <span class="exp-number">30+</span>
-                                <span class="exp-label">Projects Completed</span>
+                        <div class="skill-item">
+                            <span class="skill-name">Redux</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
-                        <div class="exp-card" style="--index: 2">
-                            <div class="card-content">
-                                <span class="exp-number">25+</span>
-                                <span class="exp-label">Happy Clients</span>
+                        <div class="skill-item">
+                            <span class="skill-name">TypeScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 class="category-title">Tools & DevOps</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">AWS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
                             </div>
                         </div>
                     </div>
@@ -163,80 +195,57 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact-section">
+    <section id="contact" class="contact">
         <div class="section-content">
-            <h2 class="section-title">
-                <span class="gradient-text">Let's Build</span>
-                <span class="glitch-text" data-text="Together">Together</span>
-            </h2>
-            <div class="contact-container">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-grid">
                 <div class="contact-info">
                     <div class="info-card">
-                        <div class="card-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="card-text">
-                            <h3>Email Me At</h3>
-                            <p>hakkan@example.com</p>
-                        </div>
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>hakkanparbej@gmail.com</p>
                     </div>
                     <div class="info-card">
-                        <div class="card-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="card-text">
-                            <h3>Based In</h3>
-                            <p>Mumbai, India</p>
-                        </div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>kolkata, India</p>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-icon" data-platform="github">
+                        <a href="https://github.com/HakkanShah" class="social-link">
                             <i class="fab fa-github"></i>
-                            <div class="icon-glow"></div>
                         </a>
-                        <a href="#" class="social-icon" data-platform="linkedin">
-                            <i class="fab fa-linkedin-in"></i>
-                            <div class="icon-glow"></div>
+                        <a href="https://www.linkedin.com/in/Hakkan/" class="social-link">
+                            <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="social-icon" data-platform="twitter">
+                        <a href="https://twitter.com/" class="social-link">
                             <i class="fab fa-twitter"></i>
-                            <div class="icon-glow"></div>
                         </a>
                     </div>
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
-                        <div class="input-container">
-                            <input type="text" id="name" required>
-                            <label for="name">Your Name</label>
-                            <div class="input-line"></div>
-                        </div>
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
                     </div>
                     <div class="form-group">
-                        <div class="input-container">
-                            <input type="email" id="email" required>
-                            <label for="email">Your Email</label>
-                            <div class="input-line"></div>
-                        </div>
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <div class="input-container">
-                            <textarea id="message" required></textarea>
-                            <label for="message">Your Message</label>
-                            <div class="input-line"></div>
-                        </div>
+                        <textarea id="message" required></textarea>
+                        <label for="message">Your Message</label>
                     </div>
-                    <button type="submit" class="submit-button">
-                        <span class="button-text">Send Message</span>
-                        <div class="button-particles"></div>
+                    <button type="submit" class="btn btn-primary">
+                        Send Message
+                        <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>Made with ❤️ by <a href="https://github.com/HakkanShah">Hakkan</a></p>
+    <footer class="footer">
+        <p>Made with <i class="fas fa-heart"></i> by Hakkan</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

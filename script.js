@@ -1,323 +1,269 @@
 // Initialize GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-// Mouse Trailer
-const mouseTrailer = document.querySelector('.mouse-trailer');
-let mouseX = 0;
-let mouseY = 0;
-let trailerX = 0;
-let trailerY = 0;
+// Custom Cursor
+function initCustomCursor() {
+    const cursor = document.createElement('div');
+    const follower = document.createElement('div');
+    cursor.className = 'cursor';
+    follower.className = 'cursor-follower';
+    document.body.appendChild(cursor);
+    document.body.appendChild(follower);
 
-// Mobile Menu
-function initMobileMenu() {
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const menuItems = document.querySelectorAll('.mobile-menu .menu-item');
+    let posX = 0, posY = 0;
+    let mouseX = 0, mouseY = 0;
 
-    if (!mobileMenuToggle || !mobileMenu) return;
-
-    mobileMenuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        mobileMenuToggle.classList.toggle('active');
-    });
-
-    menuItems.forEach(item => {
-        item.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            mobileMenuToggle.classList.remove('active');
-        });
-    });
-
-    // Close menu on outside click
-    document.addEventListener('click', (e) => {
-        if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-            mobileMenu.classList.remove('active');
-            mobileMenuToggle.classList.remove('active');
+    gsap.to({}, 0.016, {
+        repeat: -1,
+        onRepeat: function() {
+            posX += (mouseX - posX) / 9;
+            posY += (mouseY - posY) / 9;
+            gsap.set(follower, {
+                css: {
+                    left: posX - 15,
+                    top: posY - 15
+                }
+            });
+            gsap.set(cursor, {
+                css: {
+                    left: mouseX,
+                    top: mouseY
+                }
+            });
         }
     });
-}
 
-// Initialize mouse trailer
-function initMouseTrailer() {
-    if (!mouseTrailer) return;
-    
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener('mousemove', function(e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
 
-    function animateTrailer() {
-        const dx = mouseX - trailerX;
-        const dy = mouseY - trailerY;
-        
-        trailerX += dx * 0.1;
-        trailerY += dy * 0.1;
-        
-        mouseTrailer.style.transform = `translate(${trailerX - 15}px, ${trailerY - 15}px)`;
-        requestAnimationFrame(animateTrailer);
+    document.addEventListener('mousedown', function() {
+        gsap.to([cursor, follower], {
+            scale: 0.8,
+            duration: 0.3
+        });
+    });
+
+    document.addEventListener('mouseup', function() {
+        gsap.to([cursor, follower], {
+            scale: 1,
+            duration: 0.3
+        });
+    });
+}
+
+// Mobile Menu
+function initMobileMenu() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (menuToggle && mobileMenu) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
     }
-
-    animateTrailer();
-
-    // Mouse down effect
-    document.addEventListener('mousedown', () => {
-        mouseTrailer.style.transform = 'scale(0.8)';
-    });
-
-    document.addEventListener('mouseup', () => {
-        mouseTrailer.style.transform = 'scale(1)';
-    });
 }
 
 // Theme Switch
 function initThemeSwitch() {
-    const themeSwitch = document.querySelector('.theme-switch');
-    const body = document.body;
-
-    if (!themeSwitch) return;
-
-    themeSwitch.addEventListener('click', () => {
-        body.dataset.theme = body.dataset.theme === 'light' ? 'dark' : 'light';
-        localStorage.setItem('theme', body.dataset.theme);
-    });
-
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        body.dataset.theme = savedTheme;
+    const themeToggle = document.querySelector('.theme-toggle');
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+    } else if (prefersDarkScheme.matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
     }
-}
 
-// Profile Card 3D Effect
-function initProfileCard() {
-    const profileCard = document.querySelector('.profile-card');
-    let isTilted = false;
-
-    if (!profileCard) return;
-
-    profileCard.addEventListener('mousemove', (e) => {
-        if (!isTilted) return;
-        
-        const rect = profileCard.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        profileCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    profileCard.addEventListener('mouseenter', () => {
-        isTilted = true;
-        profileCard.style.transition = 'transform 0.1s ease-out';
-    });
-
-    profileCard.addEventListener('mouseleave', () => {
-        isTilted = false;
-        profileCard.style.transition = 'transform 0.5s ease-out';
-        profileCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-    });
-}
-
-// Floating Tech Pills
-function initTechPills() {
-    const techPills = document.querySelectorAll('.tech-pill');
-
-    techPills.forEach((pill, index) => {
-        gsap.to(pill, {
-            y: 20,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut",
-            delay: index * 0.2
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            let newTheme = theme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
         });
-    });
+    }
 }
 
 // Scroll Animations
 function initScrollAnimations() {
-    const sections = document.querySelectorAll('section');
+    // Hero Section
+    gsap.from('.hero-title', {
+        duration: 1,
+        y: 100,
+        opacity: 0,
+        ease: 'power4.out'
+    });
 
-    sections.forEach(section => {
-        gsap.from(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: "top 80%",
-                toggleActions: "play none none reverse"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 1
-        });
+    gsap.from('.hero-subtitle', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        delay: 0.3,
+        ease: 'power4.out'
+    });
+
+    gsap.from('.hero-cta', {
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        delay: 0.6,
+        ease: 'power4.out'
+    });
+
+    // Tech Stack
+    gsap.from('.tech-item', {
+        scrollTrigger: {
+            trigger: '.tech-stack',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power4.out'
+    });
+
+    // About Section
+    gsap.from('.about-description', {
+        scrollTrigger: {
+            trigger: '.about',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        ease: 'power4.out'
+    });
+
+    gsap.from('.stat-card', {
+        scrollTrigger: {
+            trigger: '.stats-grid',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.8,
+        y: 50,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power4.out'
+    });
+
+    // Skills Section
+    gsap.from('.skill-category', {
+        scrollTrigger: {
+            trigger: '.skills',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 1,
+        y: 50,
+        opacity: 0,
+        stagger: 0.3,
+        ease: 'power4.out'
+    });
+
+    // Contact Section
+    gsap.from('.contact-info', {
+        scrollTrigger: {
+            trigger: '.contact',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 1,
+        x: -50,
+        opacity: 0,
+        ease: 'power4.out'
+    });
+
+    gsap.from('.contact-form', {
+        scrollTrigger: {
+            trigger: '.contact',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 1,
+        x: 50,
+        opacity: 0,
+        ease: 'power4.out'
     });
 }
 
-// Form Interactions
+// Form Handling
 function initForm() {
     const form = document.querySelector('.contact-form');
-    const inputs = document.querySelectorAll('.input-container input, .input-container textarea');
-
-    if (!form || !inputs.length) return;
-
-    // Input animations
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            const label = input.nextElementSibling;
-            const line = label.nextElementSibling;
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            gsap.to(label, {
-                y: -20,
-                scale: 0.8,
-                color: 'var(--primary)',
-                duration: 0.3
-            });
+            // Get form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
             
-            gsap.to(line, {
-                scaleX: 0,
-                duration: 0.3
-            });
-        });
-        
-        input.addEventListener('blur', () => {
-            const label = input.nextElementSibling;
-            const line = label.nextElementSibling;
+            // Simulate form submission
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
             
-            if (!input.value) {
-                gsap.to(label, {
-                    y: 0,
-                    scale: 1,
-                    color: 'var(--text-secondary)',
-                    duration: 0.3
-                });
+            setTimeout(() => {
+                // Reset form
+                form.reset();
+                submitBtn.textContent = 'Message Sent!';
                 
-                gsap.to(line, {
-                    scaleX: 1,
-                    duration: 0.3
-                });
-            }
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            }, 1500);
         });
-    });
-
-    // Form submission
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        
-        const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
-        
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // Show success message
-        const successMessage = document.createElement('div');
-        successMessage.className = 'success-message';
-        successMessage.textContent = 'Message sent successfully!';
-        form.appendChild(successMessage);
-        
-        gsap.from(successMessage, {
-            y: 20,
-            opacity: 0,
-            duration: 0.5
-        });
-        
-        // Reset form
-        form.reset();
-        submitButton.disabled = false;
-        
-        // Remove success message after 3 seconds
-        setTimeout(() => {
-            gsap.to(successMessage, {
-                y: -20,
-                opacity: 0,
-                duration: 0.5,
-                onComplete: () => successMessage.remove()
-            });
-        }, 3000);
-    });
+    }
 }
 
-// Hover Effects
-function initHoverEffects() {
-    // Social Icons
-    const socialIcons = document.querySelectorAll('.social-icon');
-    socialIcons.forEach(icon => {
-        icon.addEventListener('mouseenter', () => {
-            const glow = icon.querySelector('.icon-glow');
-            gsap.to(glow, {
-                opacity: 1,
-                scale: 1.2,
-                duration: 0.3
-            });
-        });
-        
-        icon.addEventListener('mouseleave', () => {
-            const glow = icon.querySelector('.icon-glow');
-            gsap.to(glow, {
-                opacity: 0,
-                scale: 1,
-                duration: 0.3
-            });
-        });
-    });
-
-    // Skill Tags
-    const skillTags = document.querySelectorAll('.skill-tag');
-    skillTags.forEach(tag => {
-        tag.addEventListener('mouseenter', () => {
-            gsap.to(tag, {
-                y: -5,
-                scale: 1.05,
-                duration: 0.3
-            });
-        });
-        
-        tag.addEventListener('mouseleave', () => {
-            gsap.to(tag, {
-                y: 0,
-                scale: 1,
-                duration: 0.3
-            });
-        });
-    });
-
-    // Buttons
-    const buttons = document.querySelectorAll('.cta-button, .submit-button');
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', () => {
-            const particles = button.querySelector('.button-particles');
-            if (particles) {
-                gsap.to(particles, {
-                    opacity: 1,
-                    duration: 0.3
-                });
-            }
-        });
-        
-        button.addEventListener('mouseleave', () => {
-            const particles = button.querySelector('.button-particles');
-            if (particles) {
-                gsap.to(particles, {
-                    opacity: 0,
-                    duration: 0.3
-                });
-            }
+// Skill Progress Animation
+function initSkillProgress() {
+    const skillBars = document.querySelectorAll('.skill-progress');
+    skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-progress');
+        gsap.to(bar, {
+            scrollTrigger: {
+                trigger: bar,
+                start: 'top center',
+                toggleActions: 'play none none reverse'
+            },
+            width: width + '%',
+            duration: 1,
+            ease: 'power4.out'
         });
     });
 }
 
-// Initialize all features
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    initCustomCursor();
     initMobileMenu();
-    initMouseTrailer();
     initThemeSwitch();
-    initProfileCard();
-    initTechPills();
     initScrollAnimations();
     initForm();
-    initHoverEffects();
+    initSkillProgress();
 });
