@@ -14,17 +14,19 @@
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--primary), var(--secondary));
     --gradient-accent: linear-gradient(135deg, var(--accent), var(--primary));
+    --gradient-neon: linear-gradient(90deg, #00f5a0 0%, #00d9f5 100%);
     
     /* Shadows */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-    --shadow-glow: 0 0 15px rgba(99, 102, 241, 0.5);
+    --shadow-neon: 0 0 15px rgba(99, 102, 241, 0.5);
     
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 [data-theme="light"] {
@@ -115,11 +117,27 @@ body {
     text-decoration: none;
     font-weight: 500;
     transition: color var(--transition-normal);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-neon);
+    transition: width 0.3s var(--transition-bounce);
 }
 
 .nav-link:hover,
 .nav-link.active {
     color: var(--primary);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 .theme-toggle {
@@ -193,7 +211,6 @@ body {
     color: var(--primary);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     padding: 8rem 2rem;
@@ -220,6 +237,7 @@ body {
 .hero-title {
     font-size: 4rem;
     line-height: 1.2;
+    animation: neonGlow 2s infinite;
 }
 
 .gradient-text {
@@ -252,6 +270,24 @@ body {
     font-weight: 500;
     text-decoration: none;
     transition: transform var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.05)
+    );
+    transform: rotate(45deg);
+    animation: shimmerEffect 3s infinite;
 }
 
 .btn:hover {
@@ -284,12 +320,15 @@ body {
     justify-content: center;
     font-size: 2.5rem;
     color: var(--text);
-    transition: transform var(--transition-normal);
+    transition: transform 0.3s var(--transition-bounce);
     position: relative;
+    animation: float 6s infinite var(--transition-bounce);
 }
 
 .tech-item:hover {
-    transform: translateY(-5px);
+    animation: none;
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: var(--shadow-neon);
 }
 
 .tech-item::before {
@@ -408,6 +447,10 @@ body {
     opacity: 0.2;
 }
 
+.image-container:hover .image-overlay {
+    animation: pulseOpacity 2s infinite;
+}
+
 /* Skills Section */
 .skills {
     padding: 8rem 2rem;
@@ -423,6 +466,12 @@ body {
     background: var(--surface);
     padding: 2rem;
     border-radius: 16px;
+    transition: all 0.3s var(--transition-bounce);
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-neon);
 }
 
 .category-title {
@@ -459,6 +508,7 @@ body {
     background: var(--gradient-primary);
     border-radius: 4px;
     transition: width 1s ease;
+    animation: progressFill 2s var(--transition-bounce);
 }
 
 /* Contact Section */
@@ -516,12 +566,12 @@ body {
     justify-content: center;
     color: var(--text);
     text-decoration: none;
-    transition: transform var(--transition-normal);
+    transition: all 0.3s var(--transition-bounce);
 }
 
 .social-link:hover {
-    transform: translateY(-5px);
-    color: var(--primary);
+    transform: scale(1.2) rotate(360deg);
+    background: var(--gradient-neon);
 }
 
 .contact-form {
@@ -565,6 +615,7 @@ body {
 .form-group textarea:focus {
     border-color: var(--primary);
     outline: none;
+    animation: borderGlow 2s infinite;
 }
 
 .form-group input:focus ~ label,
@@ -601,6 +652,49 @@ body {
     60% {
         transform: translateY(-5px);
     }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes neonGlow {
+    0%, 100% { 
+        text-shadow: 0 0 10px var(--primary),
+                     0 0 20px var(--primary),
+                     0 0 30px var(--primary);
+    }
+    50% {
+        text-shadow: 0 0 20px var(--primary),
+                     0 0 30px var(--primary),
+                     0 0 40px var(--primary);
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% {
+        border-color: var(--primary);
+        box-shadow: 0 0 10px var(--primary);
+    }
+    50% {
+        border-color: var(--secondary);
+        box-shadow: 0 0 20px var(--secondary);
+    }
+}
+
+@keyframes shimmerEffect {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+@keyframes progressFill {
+    from { width: 0; }
+}
+
+@keyframes pulseOpacity {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.4; }
 }
 
 /* Responsive Design */
@@ -712,5 +806,9 @@ body {
     
     .btn:hover {
         transform: none;
+    }
+    
+    .nav-link:hover::after {
+        width: 0;
     }
 }
