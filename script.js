@@ -79,7 +79,6 @@ function initMobileMenu() {
     }
 }
 
-// Theme Switch
 function initThemeSwitch() {
     const themeToggle = document.querySelector('.theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
