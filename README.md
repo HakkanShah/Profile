@@ -60,8 +60,3 @@ Contributing
 
 This is a personal project, so contributions aren't open right now. However, feel free to fork it and use it as a base for your own profile!
 
-License
-
-This project is open-source and available under the MIT License.
-
-
