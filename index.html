@@ -6,6 +6,7 @@
     <title>Hakkan | MERN Stack Developer</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     
@@ -15,22 +16,26 @@
     
     <nav class="navbar">
         <div class="nav-brand">
-            <span class="brand-text">Hakkan Parbej Shah</span>
+            <span class="brand-text">Hakkan</span>
+            <span class="brand-dot">.</span>
         </div>
         <div class="nav-links">
             <a href="#home" class="nav-link active">Home</a>
             <a href="#about" class="nav-link">About</a>
             <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
             <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <button class="theme-toggle">
-            <i class="fas fa-moon"></i>
-        </button>
-        <button class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-actions">
+            <button class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </nav>
 
     
@@ -39,6 +44,7 @@
             <a href="#home" class="mobile-link">Home</a>
             <a href="#about" class="mobile-link">About</a>
             <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#projects" class="mobile-link">Projects</a>
             <a href="#contact" class="mobile-link">Contact</a>
         </div>
     </div>
@@ -47,14 +53,23 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
+                <div class="hero-badge">
+                    <span>👋 Hi, I'm Hakkan</span>
+                </div>
                 <h1 class="hero-title">
                     <span class="gradient-text">MERN Stack</span>
                     <span class="highlight-text">Developer</span>
                 </h1>
-                <p class="hero-subtitle">Building scalable web applications with modern technologies</p>
+                <p class="hero-subtitle">Crafting modern web experiences with cutting-edge technologies</p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
-                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Get in Touch</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <span>View Projects</span>
+                        <i class="fas fa-code"></i>
+                    </a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -83,7 +98,10 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="section-content">
-            <h2 class="section-title">About Me</h2>
+            <div class="section-header">
+                <span class="section-badge">About Me</span>
+                <h2 class="section-title">Passionate Developer & Problem Solver</h2>
+            </div>
             <div class="about-grid">
                 <div class="about-text">
                     <p class="about-description">
@@ -93,14 +111,23 @@
                     </p>
                     <div class="stats-grid">
                         <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
                             <span class="stat-number">1+</span>
                             <span class="stat-label">Years Experience</span>
                         </div>
                         <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
                             <span class="stat-number">10+</span>
                             <span class="stat-label">Projects Completed</span>
                         </div>
                         <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-smile"></i>
+                            </div>
                             <span class="stat-number">5+</span>
                             <span class="stat-label">Happy Clients</span>
                         </div>
@@ -119,25 +146,40 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="section-content">
-            <h2 class="section-title">My Skills</h2>
+            <div class="section-header">
+                <span class="section-badge">Skills</span>
+                <h2 class="section-title">Technologies I Work With</h2>
+            </div>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3 class="category-title">Backend</h3>
+                    <div class="category-header">
+                        <i class="fas fa-server"></i>
+                        <h3 class="category-title">Backend</h3>
+                    </div>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span class="skill-name">Node.js</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Express.js</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Express.js</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">MongoDB</span>
+                            <div class="skill-info">
+                                <span class="skill-name">MongoDB</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 80%"></div>
                             </div>
@@ -145,22 +187,34 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3 class="category-title">Frontend</h3>
+                    <div class="category-header">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3 class="category-title">Frontend</h3>
+                    </div>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span class="skill-name">React</span>
+                            <div class="skill-info">
+                                <span class="skill-name">React</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 95%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Redux</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Redux</span>
+                                <span class="skill-percentage">85%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">TypeScript</span>
+                            <div class="skill-info">
+                                <span class="skill-name">TypeScript</span>
+                                <span class="skill-percentage">80%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 80%"></div>
                             </div>
@@ -168,22 +222,34 @@
                     </div>
                 </div>
                 <div class="skill-category">
-                    <h3 class="category-title">Tools & DevOps</h3>
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3 class="category-title">Tools & DevOps</h3>
+                    </div>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span class="skill-name">Git</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Git</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">Docker</span>
+                            <div class="skill-info">
+                                <span class="skill-name">Docker</span>
+                                <span class="skill-percentage">75%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 75%"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name">AWS</span>
+                            <div class="skill-info">
+                                <span class="skill-name">AWS</span>
+                                <span class="skill-percentage">70%</span>
+                            </div>
                             <div class="skill-bar">
                                 <div class="skill-progress" style="width: 70%"></div>
                             </div>
@@ -194,23 +260,71 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-content">
+            <div class="section-header">
+                <span class="section-badge">Projects</span>
+                <h2 class="section-title">Featured Work</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="project1.jpg" alt="Project 1">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="#" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">E-Commerce Platform</h3>
+                        <p class="project-description">A full-stack e-commerce solution with React, Node.js, and MongoDB</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more project cards as needed -->
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="section-content">
-            <h2 class="section-title">Get in Touch</h2>
+            <div class="section-header">
+                <span class="section-badge">Contact</span>
+                <h2 class="section-title">Let's Work Together</h2>
+            </div>
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="info-card">
-                        <i class="fas fa-envelope"></i>
-                        <h3>Email</h3>
-                        <p>hakkanparbej@gmail.com</p>
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Email</h3>
+                            <p>hakkanparbej@gmail.com</p>
+                        </div>
                     </div>
                     <div class="info-card">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <h3>Location</h3>
-                        <p>kolkata, India</p>
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Location</h3>
+                            <p>Kolkata, India</p>
+                        </div>
                     </div>
-            <div class="social-links">
+                    <div class="social-links">
                         <a href="https://github.com/HakkanShah" class="social-link">
                             <i class="fab fa-github"></i>
                         </a>
@@ -236,7 +350,7 @@
                         <label for="message">Your Message</label>
                     </div>
                     <button type="submit" class="btn btn-primary">
-                        Send Message
+                        <span>Send Message</span>
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
@@ -245,7 +359,10 @@
     </section>
     
     <footer class="footer">
-        <p>Made with <i class="fas fa-heart"></i> by Hakkan</p>
+        <div class="footer-content">
+            <p>Made with <i class="fas fa-heart"></i> by Hakkan</p>
+            <p class="copyright">© 2024 All rights reserved</p>
+        </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
