@@ -1,7 +1,6 @@
-// Initialize GSAP
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Custom Cursor
 function initCustomCursor() {
     const cursor = document.createElement('div');
     const follower = document.createElement('div');
@@ -53,7 +52,6 @@ function initCustomCursor() {
     });
 }
 
-// Mobile Menu
 function initMobileMenu() {
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -81,7 +79,6 @@ function initMobileMenu() {
     }
 }
 
-// Theme Switch
 function initThemeSwitch() {
     const themeToggle = document.querySelector('.theme-toggle');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
