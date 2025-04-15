@@ -6,7 +6,7 @@ Welcome to my personal portfolio website repository! This project is a sleek, mo
 ## Demo:
 https://hakkanshah.github.io/Profile/
 
-Features
+## Features
 
 Fully responsive design
 
