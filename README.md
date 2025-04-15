@@ -1,5 +1,5 @@
 
-#Personal Portfolio Website
+# Personal Portfolio Website
 
 Welcome to my personal portfolio website repository! This project is a sleek, modern, and responsive web profile built to showcase my skills, projects, and contact info. Designed with a futuristic neon aesthetic and optimized for both desktop and mobile views.
 
