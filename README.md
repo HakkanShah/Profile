@@ -18,17 +18,7 @@ Clean and minimal layout
 
 Professional, modern styling
 
-Built with HTML, CSS, and JS (no frameworks)
-
-"Made with ❤️ by [GitHub Username]" footer
-
-Mobile-first design
-
-
-Screenshots
-
-
-Tech Stack
+## Tech Stack
 
 Frontend: HTML5, CSS3, JavaScript
 
