@@ -25,7 +25,7 @@ Frontend: HTML5, CSS3, JavaScript
 Deployment: Render
 
 
-How to Run Locally
+## How to Run Locally
 
 1. Clone the repo:
 
