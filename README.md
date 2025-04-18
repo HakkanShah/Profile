@@ -36,16 +36,6 @@ cd Profile
 2. Open index.html in your browser.
 
 
-
-Folder Structure
-
-Profile/
-├── index.html
-├── style.css
-├── script.js (if any)
-├── assets/ (optional images or icons)
-└── README.md
-
 Contributing
 
 This is a personal project, so contributions aren't open right now. However, feel free to fork it and use it as a base for your own profile!
