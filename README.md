@@ -36,7 +36,7 @@ cd Profile
 2. Open index.html in your browser.
 
 
-Contributing
+## Contributing
 
 This is a personal project, so contributions aren't open right now. However, feel free to fork it and use it as a base for your own profile!
 
