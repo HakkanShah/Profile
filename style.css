@@ -32,7 +32,7 @@
     --shadow-neon: 0 0 15px rgba(99, 102, 241, 0.5);
     
     /* Dimensions */
-    --header-height: 100px;
+    --header-height: 80px;
     --section-padding: 8rem 2rem;
     --container-width: 1200px;
 }
