@@ -21,7 +21,7 @@
     --blur-md: blur(12px);
     --blur-lg: blur(16px);
     
-    /* Animations */
+   
     --bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --smooth: cubic-bezier(0.4, 0, 0.2, 1);
     
