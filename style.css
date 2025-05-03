@@ -76,7 +76,7 @@ body {
 }
 
 .cursor-follower {
-    width: 40px;
+    width: 50px;
     height: 40px;
     background: rgba(99, 102, 241, 0.1);
     border: 1px solid var(--primary);
