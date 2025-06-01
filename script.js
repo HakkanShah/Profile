@@ -102,7 +102,7 @@ function initThemeSwitch() {
 
 
 function initScrollAnimations() {
-    // Hero Section
+    
     gsap.from('.hero-title', {
         duration: 1,
         y: 100,
