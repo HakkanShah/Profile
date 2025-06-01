@@ -100,7 +100,7 @@ function initThemeSwitch() {
     }
 }
 
-// Scroll Animations
+
 function initScrollAnimations() {
     // Hero Section
     gsap.from('.hero-title', {
