@@ -180,7 +180,7 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 
-    // Contact Section
+    
     gsap.from('.contact-info', {
         scrollTrigger: {
             trigger: '.contact',
