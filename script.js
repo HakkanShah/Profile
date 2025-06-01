@@ -237,7 +237,6 @@ function initForm() {
     }
 }
 
-// Skill Progress Animation
 function initSkillProgress() {
     const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
