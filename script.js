@@ -140,7 +140,7 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 
-    // About Section
+   
     gsap.from('.about-description', {
         scrollTrigger: {
             trigger: '.about',
