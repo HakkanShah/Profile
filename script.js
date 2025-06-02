@@ -248,7 +248,6 @@ function initSkillProgress() {
     });
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     initCustomCursor();
     initMobileMenu();
