@@ -202,7 +202,6 @@ function initScrollAnimations() {
     });
 }
 
-// Form Handling
 function initForm() {
     const form = document.querySelector('.contact-form');
     if (form) {
