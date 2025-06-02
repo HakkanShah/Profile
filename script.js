@@ -1,6 +1,5 @@
 
 gsap.registerPlugin(ScrollTrigger);
-
 function initCustomCursor() {
     const cursor = document.createElement('div');
     const follower = document.createElement('div');
