@@ -162,7 +162,6 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 
-    
     gsap.from('.skill-category', {
         scrollTrigger: {
             trigger: '.skills',
