@@ -862,7 +862,6 @@ body {
     overflow: hidden;
 }
 
-/* Projects Section */
 .projects {
     padding: var(--section-padding);
     background: var(--surface);
