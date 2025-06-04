@@ -582,7 +582,6 @@ body {
     margin-bottom: 1rem;
 }
 
-/* About Section */
 .about {
     padding: var(--section-padding);
     background: var(--surface);
