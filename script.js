@@ -207,7 +207,7 @@ function initForm() {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form data
+            
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
             
