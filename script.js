@@ -122,7 +122,6 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 
-    
     gsap.from('.tech-item', {
         scrollTrigger: {
             trigger: '.tech-stack',
