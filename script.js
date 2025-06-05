@@ -211,7 +211,7 @@ function initForm() {
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
             
-            // Simulate form submission
+           
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
