@@ -136,7 +136,7 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 
-   
+  
     gsap.from('.about-description', {
         scrollTrigger: {
             trigger: '.about',
