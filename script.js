@@ -19,7 +19,7 @@ function initCustomCursor() {
                 css: {
                     left: posX - 15,
                     top: posY - 15
-                }
+               }
             });
             gsap.set(cursor, {
                 css: {
