@@ -197,7 +197,6 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 }
-
 function initForm() {
     const form = document.querySelector('.contact-form');
     if (form) {
