@@ -173,7 +173,6 @@ function initScrollAnimations() {
         ease: 'power4.out'
     });
 
-
     gsap.from('.contact-info', {
         scrollTrigger: {
             trigger: '.contact',
