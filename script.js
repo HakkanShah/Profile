@@ -29,7 +29,6 @@ function initCustomCursor() {
             });
         }
     });
-
     document.addEventListener('mousemove', function(e) {
         mouseX = e.clientX;
         mouseY = e.clientY;
