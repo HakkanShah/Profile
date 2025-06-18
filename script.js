@@ -226,7 +226,6 @@ function initForm() {
         });
     }
 }
-
 function initSkillProgress() {
     const skillBars = document.querySelectorAll('.skill-progress');
     skillBars.forEach(bar => {
