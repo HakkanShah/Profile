@@ -40,7 +40,6 @@ function initCustomCursor() {
             duration: 0.3
         });
     });
-
     document.addEventListener('mouseup', function() {
         gsap.to([cursor, follower], {
             scale: 1,
