@@ -397,7 +397,6 @@ body {
     color: var(--text-secondary);
     max-width: 500px;
 }
-
 .hero-cta {
     display: flex;
     gap: 1rem;
