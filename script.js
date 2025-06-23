@@ -213,7 +213,7 @@ function initForm() {
             submitBtn.disabled = true;
             
             setTimeout(() => {
-                
+               
                 form.reset();
                 submitBtn.textContent = 'Message Sent!';
                 
