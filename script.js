@@ -214,7 +214,7 @@ function initForm() {
             
             setTimeout(() => {
                
-                form.reset();
+               form.reset();
                 submitBtn.textContent = 'Message Sent!';
                 
                 setTimeout(() => {
