@@ -132,7 +132,6 @@ function initScrollAnimations() {
         stagger: 0.2,
         ease: 'power4.out'
     });
-
   
     gsap.from('.about-description', {
         scrollTrigger: {
