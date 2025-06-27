@@ -204,7 +204,7 @@ function initForm() {
             
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
-           
+          
            
             const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
