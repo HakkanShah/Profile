@@ -61,7 +61,7 @@ function initMobileMenu() {
 
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
+               mobileMenu.classList.remove('active');
                 menuToggle.classList.remove('active');
             });
         });
