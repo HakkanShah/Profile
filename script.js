@@ -94,7 +94,6 @@ function initThemeSwitch() {
         });
     }
 }
-
 function initScrollAnimations() {
     
     gsap.from('.hero-title', {
