@@ -84,7 +84,6 @@ function initThemeSwitch() {
     } else if (prefersDarkScheme.matches) {
         document.documentElement.setAttribute('data-theme', 'dark');
     }
-
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
             let theme = document.documentElement.getAttribute('data-theme');
