@@ -245,4 +245,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initForm();
     initSkillProgress();
-}); 
+});
