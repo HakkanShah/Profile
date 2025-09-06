@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            profileCard.classList.add('flipping');
+           profileCard.classList.add('flipping');
             profileCard.addEventListener('animationend', () => {
                 profileCard.classList.remove('flipping');
             }, { once: true }); // Use { once: true } to automatically remove the listener after it fires
