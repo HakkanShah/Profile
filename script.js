@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const profileCard = document.getElementById('profileCard');
-    
+   
     profileCard.classList.add('visible');
 
     profileCard.addEventListener('click', (event) => {
