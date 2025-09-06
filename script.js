@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (profileCard.classList.contains('flipping')) {
                 return;
             }
-
            profileCard.classList.add('flipping');
             profileCard.addEventListener('animationend', () => {
                 profileCard.classList.remove('flipping');
