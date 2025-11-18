@@ -1,40 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkan Parbej Shah | Profile Card</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>HAKKAN</title>
+
+<!-- Link to external stylesheet -->
+<link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    <div class="profile-card" id="profileCard">
-        <div class="profile-pic-container">
-            <img src="https://www.github.com/HakkanShah.png" alt="Hakkan Parbej Shah" class="profile-pic">
-        </div>
-        
-        <h1 class="name">HAKKAN</h1>
-        <p class="description">🚀 Full Stack Developer passionate about building creative and impactful web apps.</p>
-        
-        <div class="social-icons">
-            <a href="mailto:hakkanparbej@gmail.com" class="icon-link email" aria-label="Email">
-                <i class="fas fa-envelope"></i>
-            </a>
-            <a href="tel:+917810843038" class="icon-link phone" aria-label="Phone">
-                <i class="fas fa-phone-alt"></i>
-            </a>
-            <a href="https://github.com/HakkanShah" target="_blank" class="icon-link github" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/hakkan/" target="_blank" class="icon-link linkedin" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-        </div>
+<div class="app">
+  <div class="container">
+    <div class="header">
+      <div class="logo">HAKKAN</div>
+      <!-- Desktop Nav -->
+      <div class="nav" role="navigation" aria-label="Main navigation (Desktop)">
+        <button id="navProfile" class="active"><span class="icon">👤</span> PROFILE</button>
+        <button id="navGames"><span class="icon">💻</span> ARCADE</button>
+        <button id="navPortfolio"><span class="icon">📂</span> PROJECTS</button>
+      </div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="main">
+      <!-- LEFT: PROFILE CARD -->
+      <aside class="card" id="profileCard">
+        <div class="avatar"><img id="profileImg" src="profile.jpg" alt="Hakkan Profile Image" onerror="this.style.display='none';this.parentElement.style.background='var(--neon-primary)';this.parentElement.innerText='[IMG]'"></div>
+        <div class="h1">HAKKAN SHAH</div>
+        <div class="role">Full Stack Developer</div>
+        <div class="bio" id="bio">Passionate Full Stack Developer with experience in building dynamic web applications. Skilled in JavaScript, HTML, CSS, and various frameworks. Always eager to learn and take on new challenges.</div>
+
+        <div class="actions">
+          <button class="btn primary" id="openGames"><span class="icon">🎮</span> LAUNCH ARCADE</button>
+          <a href="Hakkan_Parbej_Shah_Resume.pdf" class="btn ghost" id="downloadCV" download="Hakkan_Parbej_Shah_Resume.pdf"><span class="icon">💾</span> DOWNLOAD CV</a>
+        </div>
+
+        <div class="links">
+          <a href="https://hakkan.is-a.dev" target="_blank" rel="noopener">WEBSITE</a>
+          <span>|</span>
+          <a href="https://github.com/hakkan-parbej" target="_blank" rel="noopener">GITHUB</a>
+          <span>|</span>
+          <a href="https://www.linkedin.com/in/hakkan-parbej-shah/" target="_blank" rel="noopener">LINKEDIN</a>
+        </div>
+
+        <div class="console" id="console">
+$ System initialized. Console logging active.
+<span style="color:var(--muted-color)">CMD: 'view profile'</span>
+        </div>
+      </aside>
+
+      <!-- RIGHT: TERMINAL PANEL -->
+      <section class="panel" id="page">
+        <div class="panel-content">
+          <div id="pageContent"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Fixed Footer Nav -->
+<div class="footer-nav" role="navigation" aria-label="Main navigation (Mobile)">
+  <button id="navProfileMobile" class="active"><span class="icon">👤</span> PROFILE</button>
+  <button id="navGamesMobile"><span class="icon">💻</span> ARCADE</button>
+  <button id="navPortfolioMobile"><span class="icon">📂</span> PROJECTS</button>
+</div>
+
+<!-- Link to external JavaScript -->
+<script src="script.js"></script>
 </body>
-</html> 
+</html>
