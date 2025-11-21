@@ -1,72 +1,624 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>HAKKAN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakkan | Full Stack Architect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
-<!-- Link to external stylesheet -->
-<link rel="stylesheet" href="style.css">
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #0ff;
+            --secondary: #f0f;
+            --bg: #050510;
+            --card-bg: rgba(20, 20, 30, 0.8);
+            --glass: rgba(255, 255, 255, 0.05);
+            --img-url: url('https://github.com/HakkanShah.png');
+        }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        
+        body {
+            background-color: var(--bg);
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: white;
+            font-family: 'Share Tech Mono', monospace;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- CRT SCANLINE EFFECT --- */
+        body::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        /* --- MAIN PROFILE CARD --- */
+        .card-container {
+            position: relative;
+            width: 350px;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+        }
+
+        /* Decorative Corners */
+        .corner {
+            position: absolute;
+            width: 20px; height: 20px;
+            border: 2px solid var(--primary);
+            transition: 0.3s;
+        }
+        .tl { top: -5px; left: -5px; border-right: none; border-bottom: none; }
+        .tr { top: -5px; right: -5px; border-left: none; border-bottom: none; }
+        .bl { bottom: -5px; left: -5px; border-right: none; border-top: none; }
+        .br { bottom: -5px; right: -5px; border-left: none; border-top: none; }
+
+        /* Profile Image */
+        .profile-img-wrapper {
+            width: 120px; height: 120px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            border-radius: 50%;
+            padding: 5px;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--primary));
+            animation: spinBorder 4s linear infinite;
+        }
+        
+        .profile-img {
+            width: 100%; height: 100%;
+            background-image: var(--img-url);
+            background-size: cover;
+            border-radius: 50%;
+            border: 3px solid var(--bg);
+        }
+
+        /* Typography */
+        h1 { font-family: 'Orbitron', sans-serif; color: var(--primary); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; text-shadow: 0 0 10px var(--primary); }
+        h2 { color: var(--secondary); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 400; }
+        
+        .tech-stack { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        .badge { background: var(--glass); border: 1px solid var(--primary); color: var(--primary); padding: 4px 8px; font-size: 0.8rem; border-radius: 4px; }
+
+        /* Social Links */
+        .socials { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
+        .social-icon { color: white; font-size: 1.5rem; transition: 0.3s; cursor: pointer; position: relative; }
+        .social-icon:hover { color: var(--secondary); text-shadow: 0 0 15px var(--secondary); transform: translateY(-3px); }
+
+        /* Arcade Button */
+        .arcade-btn {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 12px 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+
+        .arcade-btn:hover {
+            background: var(--secondary);
+            color: var(--bg);
+            box-shadow: 0 0 30px var(--secondary);
+        }
+
+        .arcade-btn i { margin-right: 8px; }
+
+        /* --- ARCADE OVERLAY (Full Screen) --- */
+        #arcade-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 10, 15, 0.98);
+            z-index: 100;
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        #arcade-overlay.active { display: flex; opacity: 1; }
+
+        .arcade-header { width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 1rem; }
+        .arcade-title { font-family: 'Orbitron'; font-size: 2rem; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        .close-arcade { font-size: 2rem; color: white; cursor: pointer; transition: 0.3s; }
+        .close-arcade:hover { color: red; text-shadow: 0 0 10px red; }
+
+        /* Game Grid */
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .game-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--secondary);
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card:hover { background: var(--secondary); color: var(--bg); transform: scale(1.05); box-shadow: 0 0 20px var(--secondary); }
+        .game-card i { font-size: 2rem; margin-bottom: 10px; }
+        .game-title { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 5px; }
+        .game-desc { font-size: 0.7rem; opacity: 0.8; }
+
+        /* --- ACTIVE GAME WINDOW --- */
+        #game-window {
+            position: absolute;
+            width: 90%; max-width: 800px; height: 60vh;
+            background: black;
+            border: 2px solid var(--primary);
+            display: none; /* Hidden */
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.1);
+        }
+        
+        #game-ui-top { display: flex; justify-content: space-between; padding: 10px; background: rgba(0, 255, 255, 0.1); border-bottom: 1px solid var(--primary); }
+        #game-canvas-area { flex-grow: 1; position: relative; overflow: hidden; }
+        
+        .back-btn { background: red; color: white; border: none; padding: 5px 15px; cursor: pointer; font-family: inherit; }
+
+        /* --- GAME SPECIFIC ASSETS --- */
+        /* Whack-A-Hakkan */
+        .mole-grid { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; height: 100%; padding: 20px; gap: 10px; }
+        .hole { background: #333; border-radius: 50%; position: relative; overflow: hidden; border: 2px solid #555; }
+        .mole {
+            width: 80%; height: 80%;
+            background-image: var(--img-url);
+            background-size: cover;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -100%; left: 10%;
+            transition: bottom 0.1s;
+            cursor: crosshair;
+        }
+        .mole.up { bottom: 0; }
+
+        /* Animations */
+        @keyframes spinBorder { 100% { transform: rotate(360deg); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .card-container { width: 90%; padding: 1.5rem; }
+            .arcade-title { font-size: 1.5rem; }
+            .game-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
 <body>
-<div class="app">
-  <div class="container">
-    <div class="header">
-      <div class="logo">HAKKAN</div>
-      <!-- Desktop Nav -->
-      <div class="nav" role="navigation" aria-label="Main navigation (Desktop)">
-        <button id="navProfile" class="active"><span class="icon">👤</span> PROFILE</button>
-        <button id="navGames"><span class="icon">💻</span> ARCADE</button>
-        <button id="navPortfolio"><span class="icon">📂</span> PROJECTS</button>
-      </div>
+
+    <div class="card-container">
+        <div class="corner tl"></div><div class="corner tr"></div>
+        <div class="corner bl"></div><div class="corner br"></div>
+
+        <div class="profile-img-wrapper">
+            <div class="profile-img"></div>
+        </div>
+
+        <h1>Hakkan Parbej Shah</h1>
+        <h2>MERN & Next.js Architect</h2>
+
+        <div class="tech-stack">
+            <span class="badge">MongoDB</span>
+            <span class="badge">Express</span>
+            <span class="badge">React</span>
+            <span class="badge">Node</span>
+            <span class="badge">Next.js</span>
+        </div>
+
+        <div class="socials">
+            <a href="mailto:hakkan@example.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+        </div>
+
+        <button class="arcade-btn" onclick="openArcade()">
+            <i class="fas fa-gamepad"></i> Enter Arcade
+        </button>
     </div>
 
-    <div class="main">
-      <!-- LEFT: PROFILE CARD -->
-      <aside class="card" id="profileCard">
-        <div class="avatar"><img id="profileImg" src="https://github.com/HakkanShah.png" alt="Hakkan Profile Image" onerror="this.style.display='none';this.parentElement.style.background='var(--neon-primary)';this.parentElement.innerText='[IMG]'"></div>
-        <div class="h1">HAKKAN SHAH</div>
-        <div class="role">Full Stack Developer</div>
-        <div class="bio" id="bio">Passionate Full Stack Developer with experience in building dynamic web applications. Skilled in JavaScript, HTML, CSS, and various frameworks. Always eager to learn and take on new challenges.</div>
-
-        <div class="actions">
-          <button class="btn primary" id="openGames"><span class="icon">🎮</span> LAUNCH ARCADE</button>
-          <a href="Hakkan_Parbej_Shah_Resume.pdf" class="btn ghost" id="downloadCV" download="Hakkan_Parbej_Shah_Resume.pdf"><span class="icon">💾</span> DOWNLOAD CV</a>
+    <div id="arcade-overlay">
+        <div class="arcade-header">
+            <div class="arcade-title">HAKKAN ARCADE_OS</div>
+            <div class="close-arcade" onclick="closeArcade()"><i class="fas fa-times"></i></div>
         </div>
 
-        <div class="links">
-          <a href="https://hakkan.is-a.dev" target="_blank" rel="noopener">WEBSITE</a>
-          <span>|</span>
-          <a href="https://github.com/hakkan-parbej" target="_blank" rel="noopener">GITHUB</a>
-          <span>|</span>
-          <a href="https://www.linkedin.com/in/hakkan-parbej-shah/" target="_blank" rel="noopener">LINKEDIN</a>
+        <div class="game-grid" id="game-menu">
+            <div class="game-card" onclick="startGame('whack')">
+                <i class="fas fa-gavel"></i>
+                <div class="game-title">Whack-A-Hakkan</div>
+                <div class="game-desc">Smack the dev before he hides!</div>
+            </div>
+            <div class="game-card" onclick="startGame('clicker')">
+                <i class="fas fa-code"></i>
+                <div class="game-title">Dev Tycoon</div>
+                <div class="game-desc">Click face to generate code.</div>
+            </div>
+            <div class="game-card" onclick="startGame('reflex')">
+                <i class="fas fa-bolt"></i>
+                <div class="game-title">Reflex OS</div>
+                <div class="game-desc">Test your reaction speed.</div>
+            </div>
+            <div class="game-card" onclick="startGame('memory')">
+                <i class="fas fa-brain"></i>
+                <div class="game-title">Memory Stack</div>
+                <div class="game-desc">Match the dev stacks.</div>
+            </div>
+            <div class="game-card" onclick="startGame('dodge')">
+                <i class="fas fa-ghost"></i>
+                <div class="game-title">Bug Dodger</div>
+                <div class="game-desc">Don't let bugs touch the dev!</div>
+            </div>
         </div>
 
-        <div class="console" id="console">
-$ System initialized. Console logging active.
-<span style="color:var(--muted-color)">CMD: 'view profile'</span>
+        <div id="game-window">
+            <div id="game-ui-top">
+                <span id="game-stats">Score: 0</span>
+                <button class="back-btn" onclick="exitGame()">EXIT GAME</button>
+            </div>
+            <div id="game-canvas-area">
+                </div>
         </div>
-      </aside>
-
-      <!-- RIGHT: TERMINAL PANEL -->
-      <section class="panel" id="page">
-        <div class="panel-content">
-          <div id="pageContent"></div>
-        </div>
-      </section>
     </div>
-  </div>
-</div>
 
-<!-- Mobile Fixed Footer Nav -->
-<div class="footer-nav" role="navigation" aria-label="Main navigation (Mobile)">
-  <button id="navProfileMobile" class="active"><span class="icon">👤</span> PROFILE</button>
-  <button id="navGamesMobile"><span class="icon">💻</span> ARCADE</button>
-  <button id="navPortfolioMobile"><span class="icon">📂</span> PROJECTS</button>
-</div>
+    <script>
+        // --- ARCADE LOGIC ---
+        const arcadeOverlay = document.getElementById('arcade-overlay');
+        const gameMenu = document.getElementById('game-menu');
+        const gameWindow = document.getElementById('game-window');
+        const canvasArea = document.getElementById('game-canvas-area');
+        const statsDisplay = document.getElementById('game-stats');
+        
+        let activeGameInterval = null;
+        let score = 0;
 
-<!-- Link to external JavaScript -->
-<script src="script.js"></script>
+        function openArcade() {
+            arcadeOverlay.classList.add('active');
+        }
+
+        function closeArcade() {
+            if(gameWindow.style.display === 'flex') exitGame();
+            arcadeOverlay.classList.remove('active');
+        }
+
+        function startGame(gameType) {
+            gameMenu.style.display = 'none';
+            gameWindow.style.display = 'flex';
+            canvasArea.innerHTML = ''; // Clear previous game
+            score = 0;
+            statsDisplay.innerText = "Score: 0";
+
+            // Load specific game logic
+            if (gameType === 'whack') initWhackAHakkan();
+            if (gameType === 'clicker') initDevClicker();
+            if (gameType === 'reflex') initReflex();
+            if (gameType === 'memory') initMemory();
+            if (gameType === 'dodge') initDodge();
+        }
+
+        function exitGame() {
+            if (activeGameInterval) clearInterval(activeGameInterval);
+            gameWindow.style.display = 'none';
+            gameMenu.style.display = 'grid';
+            canvasArea.innerHTML = '';
+        }
+
+        // --- GAME 1: WHACK-A-HAKKAN ---
+        function initWhackAHakkan() {
+            const grid = document.createElement('div');
+            grid.className = 'mole-grid';
+            for(let i=0; i<9; i++) {
+                const hole = document.createElement('div');
+                hole.className = 'hole';
+                const mole = document.createElement('div');
+                mole.className = 'mole';
+                mole.onclick = () => {
+                    if(!mole.classList.contains('up')) return;
+                    score++;
+                    statsDisplay.innerText = "Score: " + score;
+                    mole.classList.remove('up');
+                };
+                hole.appendChild(mole);
+                grid.appendChild(hole);
+            }
+            canvasArea.appendChild(grid);
+
+            const moles = document.querySelectorAll('.mole');
+            activeGameInterval = setInterval(() => {
+                moles.forEach(m => m.classList.remove('up'));
+                const random = Math.floor(Math.random() * moles.length);
+                moles[random].classList.add('up');
+            }, 800);
+        }
+
+        // --- GAME 2: DEV TYCOON (CLICKER) ---
+        function initDevClicker() {
+            canvasArea.style.display = 'flex';
+            canvasArea.style.justifyContent = 'center';
+            canvasArea.style.alignItems = 'center';
+
+            const face = document.createElement('div');
+            face.style.width = '150px';
+            face.style.height = '150px';
+            face.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
+            face.style.backgroundSize = 'cover';
+            face.style.borderRadius = '50%';
+            face.style.cursor = 'pointer';
+            face.style.boxShadow = '0 0 20px #0ff';
+            face.style.transition = '0.1s';
+
+            face.onclick = (e) => {
+                score += 1; // lines of code
+                statsDisplay.innerText = `Lines of Code: ${score}`;
+                face.style.transform = 'scale(0.95)';
+                setTimeout(() => face.style.transform = 'scale(1)', 50);
+
+                // Create floating text
+                const float = document.createElement('div');
+                float.innerText = "+1 LOC";
+                float.style.position = 'absolute';
+                float.style.color = '#0f0';
+                float.style.left = (e.clientX - canvasArea.getBoundingClientRect().left) + 'px';
+                float.style.top = (e.clientY - canvasArea.getBoundingClientRect().top) + 'px';
+                float.style.pointerEvents = 'none';
+                canvasArea.appendChild(float);
+                
+                let op = 1;
+                let top = parseInt(float.style.top);
+                const anim = setInterval(() => {
+                    if (op <= 0.1) {
+                        clearInterval(anim);
+                        float.remove();
+                    }
+                    float.style.opacity = op;
+                    float.style.top = (top - 2) + 'px';
+                    op -= 0.1;
+                    top -= 2;
+                }, 50);
+            };
+            canvasArea.appendChild(face);
+        }
+
+        // --- GAME 3: REFLEX TEST ---
+        function initReflex() {
+            canvasArea.style.display = 'flex';
+            canvasArea.style.justifyContent = 'center';
+            canvasArea.style.alignItems = 'center';
+            canvasArea.style.flexDirection = 'column';
+
+            const msg = document.createElement('h2');
+            msg.innerText = "Wait for Green...";
+            msg.style.color = "white";
+            msg.style.fontFamily = "Orbitron";
+
+            const btn = document.createElement('div');
+            btn.style.width = '200px';
+            btn.style.height = '200px';
+            btn.style.background = 'red';
+            btn.style.borderRadius = '50%';
+            btn.style.marginTop = '20px';
+            btn.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
+            btn.style.backgroundSize = 'cover';
+            btn.style.filter = 'grayscale(100%)';
+            btn.style.cursor = 'pointer';
+
+            canvasArea.appendChild(msg);
+            canvasArea.appendChild(btn);
+
+            let startTime = 0;
+            let waiting = true;
+
+            function startRound() {
+                msg.innerText = "Wait for Green...";
+                btn.style.filter = 'grayscale(100%)';
+                btn.style.boxShadow = 'none';
+                waiting = true;
+
+                const delay = 1000 + Math.random() * 2000;
+                setTimeout(() => {
+                    if(!canvasArea.contains(btn)) return; // Ensure game didn't close
+                    waiting = false;
+                    btn.style.filter = 'none';
+                    btn.style.boxShadow = '0 0 50px #0f0';
+                    msg.innerText = "CLICK NOW!";
+                    msg.style.color = "#0f0";
+                    startTime = Date.now();
+                }, delay);
+            }
+
+            btn.onclick = () => {
+                if (waiting) {
+                    msg.innerText = "Too early! Retry.";
+                    msg.style.color = "red";
+                    setTimeout(startRound, 1000);
+                } else {
+                    const time = Date.now() - startTime;
+                    msg.innerText = `${time} ms!`;
+                    msg.style.color = "#0ff";
+                    waiting = true;
+                    setTimeout(startRound, 1500);
+                }
+            };
+
+            startRound();
+        }
+
+        // --- GAME 4: MEMORY STACK ---
+        function initMemory() {
+            const icons = ['fa-react', 'fa-node', 'fa-js', 'fa-html5', 'fa-css3', 'fa-python'];
+            let cards = [...icons, ...icons]; // pairs
+            cards.sort(() => 0.5 - Math.random());
+
+            const grid = document.createElement('div');
+            grid.style.display = 'grid';
+            grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+            grid.style.gap = '10px';
+            grid.style.padding = '20px';
+            grid.style.width = '100%';
+            grid.style.height = '100%';
+
+            let flipped = [];
+            let solved = 0;
+
+            cards.forEach(icon => {
+                const card = document.createElement('div');
+                card.style.background = '#222';
+                card.style.border = '1px solid #0ff';
+                card.style.display = 'flex';
+                card.style.justifyContent = 'center';
+                card.style.alignItems = 'center';
+                card.style.cursor = 'pointer';
+                card.style.fontSize = '2rem';
+                card.dataset.icon = icon;
+
+                const inner = document.createElement('i');
+                inner.className = `fab ${icon}`;
+                inner.style.display = 'none'; // Hidden initially
+                
+                // Use Hakkan image as card back
+                const back = document.createElement('div');
+                back.style.width = '100%'; back.style.height = '100%';
+                back.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
+                back.style.backgroundSize = 'cover';
+                back.style.opacity = '0.5';
+                
+                card.appendChild(back);
+                card.appendChild(inner);
+
+                card.onclick = () => {
+                    if (flipped.length < 2 && !card.classList.contains('active')) {
+                        card.classList.add('active');
+                        back.style.display = 'none';
+                        inner.style.display = 'block';
+                        flipped.push(card);
+
+                        if (flipped.length === 2) {
+                            setTimeout(() => {
+                                if (flipped[0].dataset.icon === flipped[1].dataset.icon) {
+                                    flipped[0].style.background = '#0f0';
+                                    flipped[1].style.background = '#0f0';
+                                    solved++;
+                                    if (solved === 6) statsDisplay.innerText = "YOU WIN!";
+                                } else {
+                                    flipped.forEach(c => {
+                                        c.classList.remove('active');
+                                        c.querySelector('i').style.display = 'none';
+                                        c.querySelector('div').style.display = 'block';
+                                    });
+                                }
+                                flipped = [];
+                            }, 800);
+                        }
+                    }
+                };
+                grid.appendChild(card);
+            });
+            canvasArea.appendChild(grid);
+        }
+
+        // --- GAME 5: BUG DODGE (Simple JS Collision) ---
+        function initDodge() {
+            canvasArea.style.position = 'relative';
+            
+            // Player
+            const player = document.createElement('div');
+            player.style.width = '50px'; player.style.height = '50px';
+            player.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
+            player.style.backgroundSize = 'cover';
+            player.style.borderRadius = '50%';
+            player.style.position = 'absolute';
+            player.style.bottom = '10px';
+            player.style.left = '50%';
+            player.style.boxShadow = '0 0 15px #0ff';
+            player.style.transition = 'left 0.1s linear';
+            canvasArea.appendChild(player);
+
+            // Controls
+            let playerLeft = 50;
+            document.onkeydown = (e) => {
+                if(e.key === 'ArrowLeft' && playerLeft > 0) playerLeft -= 5;
+                if(e.key === 'ArrowRight' && playerLeft < 90) playerLeft += 5;
+                player.style.left = playerLeft + '%';
+            };
+
+            // Bugs
+            activeGameInterval = setInterval(() => {
+                const bug = document.createElement('div');
+                bug.className = 'fas fa-bug';
+                bug.style.position = 'absolute';
+                bug.style.top = '0px';
+                bug.style.left = Math.random() * 90 + '%';
+                bug.style.color = 'red';
+                bug.style.fontSize = '30px';
+                canvasArea.appendChild(bug);
+
+                let bugTop = 0;
+                const bugFall = setInterval(() => {
+                    if(!canvasArea.contains(bug)) { clearInterval(bugFall); return; }
+                    bugTop += 2;
+                    bug.style.top = bugTop + '%';
+
+                    // Check Collision
+                    const pRect = player.getBoundingClientRect();
+                    const bRect = bug.getBoundingClientRect();
+
+                    if( !(pRect.right < bRect.left || pRect.left > bRect.right || pRect.bottom < bRect.top || pRect.top > bRect.bottom) ) {
+                        clearInterval(activeGameInterval);
+                        clearInterval(bugFall);
+                        statsDisplay.innerText = "GAME OVER! Final Score: " + score;
+                        statsDisplay.style.color = 'red';
+                    }
+
+                    if (bugTop > 100) {
+                        score++;
+                        statsDisplay.innerText = "Score: " + score;
+                        bug.remove();
+                        clearInterval(bugFall);
+                    }
+                }, 20);
+            }, 800);
+        }
+
+    </script>
 </body>
 </html>
