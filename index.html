@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hakkan | Full Stack Architect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hakkan's Arcade</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
@@ -13,13 +13,13 @@
             --primary: #0ff;
             --secondary: #f0f;
             --bg: #050510;
-            --card-bg: rgba(20, 20, 30, 0.8);
+            --card-bg: rgba(20, 20, 30, 0.95);
             --glass: rgba(255, 255, 255, 0.05);
             --img-url: url('https://github.com/HakkanShah.png');
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
+
         body {
             background-color: var(--bg);
             background-image: 
@@ -30,198 +30,179 @@
             font-family: 'Share Tech Mono', monospace;
             height: 100vh;
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
         }
 
-        /* --- CRT SCANLINE EFFECT --- */
+        /* CRT Scanline */
         body::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            content: ""; position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            z-index: 999;
+            background-size: 100% 2px, 3px 100%; pointer-events: none; z-index: 999;
         }
 
-        /* --- MAIN PROFILE CARD --- */
+        /* --- PROFILE CARD --- */
         .card-container {
-            position: relative;
-            width: 350px;
-            padding: 2rem;
-            background: var(--card-bg);
-            border: 1px solid var(--primary);
+            position: relative; width: 380px; max-width: 90%; padding: 2.5rem 2rem;
+            background: var(--card-bg); border: 1px solid var(--primary);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: float 6s ease-in-out infinite;
+            backdrop-filter: blur(10px); border-radius: 15px; text-align: center;
+            animation: float 6s ease-in-out infinite; z-index: 10;
         }
 
-        .card-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-        }
-
-        /* Decorative Corners */
-        .corner {
-            position: absolute;
-            width: 20px; height: 20px;
-            border: 2px solid var(--primary);
-            transition: 0.3s;
-        }
+        .corner { position: absolute; width: 20px; height: 20px; border: 2px solid var(--primary); }
         .tl { top: -5px; left: -5px; border-right: none; border-bottom: none; }
         .tr { top: -5px; right: -5px; border-left: none; border-bottom: none; }
         .bl { bottom: -5px; left: -5px; border-right: none; border-top: none; }
         .br { bottom: -5px; right: -5px; border-left: none; border-top: none; }
 
-        /* Profile Image */
         .profile-img-wrapper {
-            width: 120px; height: 120px;
-            margin: 0 auto 1.5rem;
-            position: relative;
-            border-radius: 50%;
-            padding: 5px;
+            width: 130px; height: 130px; margin: 0 auto 1.5rem;
+            position: relative; border-radius: 50%; padding: 5px;
             background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--primary));
             animation: spinBorder 4s linear infinite;
         }
-        
         .profile-img {
-            width: 100%; height: 100%;
-            background-image: var(--img-url);
-            background-size: cover;
-            border-radius: 50%;
-            border: 3px solid var(--bg);
+            width: 100%; height: 100%; background-image: var(--img-url);
+            background-size: cover; background-position: center;
+            border-radius: 50%; border: 3px solid var(--bg);
         }
 
-        /* Typography */
-        h1 { font-family: 'Orbitron', sans-serif; color: var(--primary); font-size: 1.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 5px; text-shadow: 0 0 10px var(--primary); }
-        h2 { color: var(--secondary); font-size: 1rem; margin-bottom: 1.5rem; font-weight: 400; }
-        
-        .tech-stack { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-        .badge { background: var(--glass); border: 1px solid var(--primary); color: var(--primary); padding: 4px 8px; font-size: 0.8rem; border-radius: 4px; }
+        h1 { font-family: 'Orbitron', sans-serif; color: var(--primary); font-size: 1.6rem; margin-bottom: 5px; text-shadow: 0 0 10px var(--primary); }
+        h2 { color: var(--secondary); font-size: 0.9rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
 
-        /* Social Links */
-        .socials { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; }
-        .social-icon { color: white; font-size: 1.5rem; transition: 0.3s; cursor: pointer; position: relative; }
+        .tech-stack { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
+        .badge { background: var(--glass); border: 1px solid var(--primary); color: var(--primary); padding: 4px 8px; font-size: 0.75rem; border-radius: 4px; }
+
+        .socials { display: flex; justify-content: center; gap: 1.2rem; margin-bottom: 2rem; align-items: center; }
+        .social-icon { color: white; font-size: 1.4rem; transition: 0.3s; cursor: pointer; text-decoration: none; }
         .social-icon:hover { color: var(--secondary); text-shadow: 0 0 15px var(--secondary); transform: translateY(-3px); }
 
-        /* Arcade Button */
+        .resume-btn {
+            border: 1px solid var(--primary); padding: 8px 12px; border-radius: 5px; font-size: 0.9rem;
+            color: var(--primary); background: rgba(0, 255, 255, 0.1); font-family: 'Orbitron', sans-serif;
+            display: flex; gap: 8px; align-items: center; animation: pulse 2s infinite;
+        }
+        .resume-btn:hover { background: var(--primary); color: var(--bg); box-shadow: 0 0 15px var(--primary); animation: none; }
+
         .arcade-btn {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            padding: 12px 25px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            background: transparent; border: 2px solid var(--secondary); color: var(--secondary);
+            padding: 12px 30px; font-family: 'Orbitron', sans-serif; font-weight: bold; cursor: pointer;
+            transition: 0.3s; text-transform: uppercase; letter-spacing: 2px;
             clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
         }
+        .arcade-btn:hover { background: var(--secondary); color: var(--bg); box-shadow: 0 0 30px var(--secondary); }
 
-        .arcade-btn:hover {
-            background: var(--secondary);
-            color: var(--bg);
-            box-shadow: 0 0 30px var(--secondary);
-        }
-
-        .arcade-btn i { margin-right: 8px; }
-
-        /* --- ARCADE OVERLAY (Full Screen) --- */
+        /* --- ARCADE OVERLAY --- */
         #arcade-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10, 10, 15, 0.98);
-            z-index: 100;
-            display: none; /* Hidden by default */
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s;
+            background: rgba(5, 5, 10, 0.98); z-index: 100;
+            display: none; flex-direction: column; align-items: center;
+            opacity: 0; transition: opacity 0.5s; overflow-y: auto;
         }
-
         #arcade-overlay.active { display: flex; opacity: 1; }
 
-        .arcade-header { width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 1rem; }
-        .arcade-title { font-family: 'Orbitron'; font-size: 2rem; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
-        .close-arcade { font-size: 2rem; color: white; cursor: pointer; transition: 0.3s; }
-        .close-arcade:hover { color: red; text-shadow: 0 0 10px red; }
+        .arcade-header { 
+            width: 90%; max-width: 800px; display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 1rem; border-bottom: 2px solid var(--primary); padding: 1rem 0; margin-top: 20px;
+        }
+        .arcade-title { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--primary); }
+        .close-arcade { font-size: 2rem; color: white; cursor: pointer; }
 
-        /* Game Grid */
         .game-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
-            width: 90%;
-            max-width: 800px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px; width: 90%; max-width: 800px; padding-bottom: 50px;
         }
-
         .game-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--secondary);
-            padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,0,255,0.3);
+            padding: 1.2rem; text-align: center; cursor: pointer; transition: 0.3s; border-radius: 8px;
         }
-
         .game-card:hover { background: var(--secondary); color: var(--bg); transform: scale(1.05); box-shadow: 0 0 20px var(--secondary); }
-        .game-card i { font-size: 2rem; margin-bottom: 10px; }
-        .game-title { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 5px; }
-        .game-desc { font-size: 0.7rem; opacity: 0.8; }
+        .game-card i { font-size: 1.8rem; margin-bottom: 10px; }
+        .game-title { font-family: 'Orbitron'; font-size: 0.8rem; margin-bottom: 5px; font-weight: bold; }
+        .game-desc { font-size: 0.65rem; opacity: 0.8; }
 
-        /* --- ACTIVE GAME WINDOW --- */
+        /* --- GAME WINDOW --- */
         #game-window {
-            position: absolute;
-            width: 90%; max-width: 800px; height: 60vh;
-            background: black;
-            border: 2px solid var(--primary);
-            display: none; /* Hidden */
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 0 50px rgba(0, 255, 255, 0.1);
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 95%; max-width: 600px; height: 85vh; max-height: 700px;
+            background: #000; border: 2px solid var(--primary); display: none;
+            flex-direction: column; box-shadow: 0 0 50px rgba(0, 255, 255, 0.2); z-index: 110;
         }
-        
-        #game-ui-top { display: flex; justify-content: space-between; padding: 10px; background: rgba(0, 255, 255, 0.1); border-bottom: 1px solid var(--primary); }
-        #game-canvas-area { flex-grow: 1; position: relative; overflow: hidden; }
-        
-        .back-btn { background: red; color: white; border: none; padding: 5px 15px; cursor: pointer; font-family: inherit; }
-
-        /* --- GAME SPECIFIC ASSETS --- */
-        /* Whack-A-Hakkan */
-        .mole-grid { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; height: 100%; padding: 20px; gap: 10px; }
-        .hole { background: #333; border-radius: 50%; position: relative; overflow: hidden; border: 2px solid #555; }
-        .mole {
-            width: 80%; height: 80%;
-            background-image: var(--img-url);
-            background-size: cover;
-            border-radius: 50%;
-            position: absolute;
-            bottom: -100%; left: 10%;
-            transition: bottom 0.1s;
-            cursor: crosshair;
+        #game-ui-top { 
+            display: flex; justify-content: space-between; align-items: center; padding: 10px 15px;
+            background: rgba(0, 255, 255, 0.1); border-bottom: 1px solid var(--primary); height: 50px;
         }
-        .mole.up { bottom: 0; }
+        #game-stats { font-family: 'Orbitron'; color: var(--primary); font-size: 0.9rem; }
+        .back-btn { background: #ff3333; color: white; border: none; padding: 5px 15px; cursor: pointer; font-family: 'Orbitron'; }
+        #game-canvas-area { 
+            flex-grow: 1; position: relative; overflow: hidden; width: 100%; height: 100%; touch-action: none;
+        }
 
-        /* Animations */
+        /* --- OVERLAYS (Briefing & Game Over) --- */
+        .overlay-screen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.92); z-index: 20;
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 20px;
+        }
+        .briefing-title { font-family: 'Orbitron'; color: var(--primary); font-size: 1.5rem; margin-bottom: 10px; }
+        .briefing-text { color: #fff; margin-bottom: 20px; font-size: 1rem; line-height: 1.5; max-width: 80%; }
+        .action-btn {
+            background: var(--secondary); color: #000; padding: 10px 25px; border: none;
+            font-family: 'Orbitron'; font-weight: bold; cursor: pointer; font-size: 1.2rem;
+            animation: pulse 1.5s infinite; margin-top: 10px;
+        }
+        .restart-btn { background: #0f0; box-shadow: 0 0 15px #0f0; }
+
+        /* --- GAME ASSETS --- */
+        .mole-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; width: 100%; height: 100%; align-content: center; }
+        .hole { width: 100%; padding-top: 100%; background: #222; border-radius: 50%; position: relative; border: 3px solid #444; overflow: hidden; box-shadow: inset 0 0 15px black; }
+        .mole { position: absolute; width: 100%; height: 100%; left: 0; top: 100%; background-image: var(--img-url); background-size: cover; border-radius: 50%; transition: top 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer; }
+        .mole.up { top: 0; }
+
+        /* Dev Clicker Specifics */
+        .clicker-area { width: 100%; height: 100%; position: relative; overflow: hidden; }
+        .clicker-face-container {
+            position: absolute; bottom: 30px; left: 0; width: 100%;
+            display: flex; justify-content: center; z-index: 10;
+        }
+        .clicker-face {
+            width: 120px; height: 120px;
+            background-image: var(--img-url); background-size: cover;
+            border-radius: 50%; border: 3px solid var(--primary);
+            cursor: pointer; box-shadow: 0 0 30px var(--primary);
+            transition: transform 0.05s;
+        }
+        .clicker-face:active { transform: scale(0.9); }
+        .code-zone {
+            position: absolute; top: 0; left: 0; width: 100%; height: 80%;
+            pointer-events: none;
+        }
+        .floating-code {
+            position: absolute; color: #0f0; font-family: 'Share Tech Mono'; font-weight: bold; 
+            font-size: 1.1rem; text-shadow: 0 0 5px #0f0; opacity: 0;
+            animation: floatUpFade 1.5s ease-out forwards;
+            left: 50%; transform: translateX(-50%); width: 100%; text-align: center;
+        }
+        @keyframes floatUpFade { 
+            0% { opacity: 0; transform: translateY(100px) scale(0.5); } 
+            20% { opacity: 1; transform: translateY(50px) scale(1); }
+            100% { opacity: 0; transform: translateY(-150px); } 
+        }
+
+        /* Typing Game */
+        #typing-container { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
+        #typing-word { font-family: 'Share Tech Mono'; font-size: 2rem; color: var(--secondary); margin-bottom: 20px; text-shadow: 0 0 10px var(--secondary); }
+        #typing-input { background: transparent; border: 2px solid var(--primary); color: var(--primary); font-family: 'Orbitron'; font-size: 1.5rem; padding: 10px; text-align: center; outline: none; text-transform: uppercase; }
+
         @keyframes spinBorder { 100% { transform: rotate(360deg); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        
-        /* Mobile Responsive */
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(0, 255, 255, 0); } 100% { box-shadow: 0 0 0 0 rgba(0, 255, 255, 0); } }
+
         @media (max-width: 600px) {
-            .card-container { width: 90%; padding: 1.5rem; }
-            .arcade-title { font-size: 1.5rem; }
-            .game-grid { grid-template-columns: 1fr 1fr; }
+            .card-container { width: 95%; padding: 1.5rem; }
+            #game-window { height: 90vh; width: 100%; border: none; }
+            .clicker-face { width: 100px; height: 100px; }
         }
     </style>
 </head>
@@ -235,21 +216,24 @@
             <div class="profile-img"></div>
         </div>
 
-        <h1>Hakkan Parbej Shah</h1>
-        <h2>MERN & Next.js Architect</h2>
+        <h1>Hakkan</h1>
+        <h2>Full Stack Developer</h2>
 
         <div class="tech-stack">
-            <span class="badge">MongoDB</span>
-            <span class="badge">Express</span>
-            <span class="badge">React</span>
-            <span class="badge">Node</span>
-            <span class="badge">Next.js</span>
+            <span class="badge">REACTJS</span>
+            <span class="badge">NEXTJS</span>
+            <span class="badge">JavaScript</span>
+            <span class="badge">TypeScript</span>
+            <span class="badge">NODEJS</span>
         </div>
 
         <div class="socials">
-            <a href="mailto:hakkan@example.com" class="social-icon"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="mailto:hakkanparbej@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+            <a href="https://www.linkedin.com/in/hakkan" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/HakkanShah" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+            <a href="hakkan_parbej_saha_resume.pdf" download class="social-icon resume-btn" title="Download Resume">
+                <i class="fas fa-file-arrow-down"></i> Resume
+            </a>
         </div>
 
         <button class="arcade-btn" onclick="openArcade()">
@@ -259,366 +243,427 @@
 
     <div id="arcade-overlay">
         <div class="arcade-header">
-            <div class="arcade-title">HAKKAN ARCADE_OS</div>
+            <div class="arcade-title">HAKKAN'S ARCADE</div>
             <div class="close-arcade" onclick="closeArcade()"><i class="fas fa-times"></i></div>
         </div>
 
         <div class="game-grid" id="game-menu">
-            <div class="game-card" onclick="startGame('whack')">
+            <div class="game-card" onclick="prepareGame('whack')">
                 <i class="fas fa-gavel"></i>
                 <div class="game-title">Whack-A-Hakkan</div>
-                <div class="game-desc">Smack the dev before he hides!</div>
+                <div class="game-desc">Reaction Speed (60s)</div>
             </div>
-            <div class="game-card" onclick="startGame('clicker')">
-                <i class="fas fa-code"></i>
-                <div class="game-title">Dev Tycoon</div>
-                <div class="game-desc">Click face to generate code.</div>
+            <div class="game-card" onclick="prepareGame('flappy')">
+                <i class="fas fa-dove"></i>
+                <div class="game-title">Flappy Hakkan</div>
+                <div class="game-desc">Tap to Fly</div>
             </div>
-            <div class="game-card" onclick="startGame('reflex')">
-                <i class="fas fa-bolt"></i>
-                <div class="game-title">Reflex OS</div>
-                <div class="game-desc">Test your reaction speed.</div>
+            <div class="game-card" onclick="prepareGame('snake')">
+                <i class="fas fa-dragon"></i>
+                <div class="game-title">Hakkan Snake</div>
+                <div class="game-desc">Collect Pizza 🍕</div>
             </div>
-            <div class="game-card" onclick="startGame('memory')">
-                <i class="fas fa-brain"></i>
-                <div class="game-title">Memory Stack</div>
-                <div class="game-desc">Match the dev stacks.</div>
-            </div>
-            <div class="game-card" onclick="startGame('dodge')">
+            <div class="game-card" onclick="prepareGame('dodge')">
                 <i class="fas fa-ghost"></i>
                 <div class="game-title">Bug Dodger</div>
-                <div class="game-desc">Don't let bugs touch the dev!</div>
+                <div class="game-desc">Evasion</div>
+            </div>
+            <div class="game-card" onclick="prepareGame('typing')">
+                <i class="fas fa-keyboard"></i>
+                <div class="game-title">Terminal Tycoon</div>
+                <div class="game-desc">Typing Speed</div>
+            </div>
+            <div class="game-card" onclick="prepareGame('clicker')">
+                <i class="fas fa-code"></i>
+                <div class="game-title">Dev Clicker</div>
+                <div class="game-desc">Code Generator (60s)</div>
+            </div>
+             <div class="game-card" onclick="prepareGame('blaster')">
+                <i class="fas fa-rocket"></i>
+                <div class="game-title">Bit Blaster</div>
+                <div class="game-desc">Space Shooter</div>
             </div>
         </div>
+    </div>
 
-        <div id="game-window">
-            <div id="game-ui-top">
-                <span id="game-stats">Score: 0</span>
-                <button class="back-btn" onclick="exitGame()">EXIT GAME</button>
-            </div>
-            <div id="game-canvas-area">
-                </div>
+    <div id="game-window">
+        <div id="game-ui-top">
+            <span id="game-stats">Score: 0</span>
+            <button class="back-btn" onclick="exitGame()">EXIT</button>
+        </div>
+        
+        <div id="game-canvas-area"></div>
+
+        <div id="mission-briefing" class="overlay-screen">
+            <div class="briefing-title" id="brief-title">GAME TITLE</div>
+            <div class="briefing-text" id="brief-text">Instructions.</div>
+            <button class="action-btn" onclick="launchGame()">START MISSION</button>
+        </div>
+
+        <div id="game-over-screen" class="overlay-screen">
+            <div class="briefing-title" style="color:red;font-size:2rem;">GAME OVER</div>
+            <div class="briefing-text" id="final-score">Score: 0</div>
+            <button class="action-btn restart-btn" onclick="launchGame()">TRY AGAIN</button>
+            <button class="action-btn" style="background:gray;" onclick="exitGame()">EXIT MENU</button>
         </div>
     </div>
 
     <script>
-        // --- ARCADE LOGIC ---
-        const arcadeOverlay = document.getElementById('arcade-overlay');
-        const gameMenu = document.getElementById('game-menu');
-        const gameWindow = document.getElementById('game-window');
-        const canvasArea = document.getElementById('game-canvas-area');
-        const statsDisplay = document.getElementById('game-stats');
+        // --- ASSETS & CONFIG ---
+        const hakkanImg = new Image();
+        hakkanImg.src = 'https://github.com/HakkanShah.png';
         
-        let activeGameInterval = null;
-        let score = 0;
+        const CODE_SNIPPETS = [
+            "import React from 'react';", "const [bug, setBug] = useState(null);", 
+            "npm audit fix --force", "console.log('Hired!');", "git push origin main", 
+            "<Hakkan />", "useEffect(() => {}, [])", "res.status(200).send()",
+            "mongoose.connect(db)", "display: flex;", "justify-content: center;",
+            "while(alive) { code(); }", "sudo rm -rf /bugs", "docker-compose up"
+        ];
 
-        function openArcade() {
-            arcadeOverlay.classList.add('active');
+        const els = {
+            overlay: document.getElementById('arcade-overlay'),
+            menu: document.getElementById('game-menu'),
+            window: document.getElementById('game-window'),
+            canvas: document.getElementById('game-canvas-area'),
+            stats: document.getElementById('game-stats'),
+            briefing: document.getElementById('mission-briefing'),
+            gameOver: document.getElementById('game-over-screen'),
+            briefTitle: document.getElementById('brief-title'),
+            briefText: document.getElementById('brief-text'),
+            finalScore: document.getElementById('final-score')
+        };
+        
+        let state = { loop: null, interval: null, timer: null, score: 0, running: false, type: null, timeLeft: 60 };
+
+        const INSTRUCTIONS = {
+            whack: { title: "WHACK-A-HAKKAN", text: "Tap the developer's face as soon as it pops out!\nTime Limit: 60s." },
+            flappy: { title: "FLAPPY HAKKAN", text: "Navigate your face through the Server Firewalls.\nTap or Click to jump." },
+            snake: { title: "HAKKAN SNAKE", text: "Guide the snake (made of your face!) to eat the Pizza 🍕.\nPC: Arrows | Mobile: Swipe." },
+            dodge: { title: "BUG DODGER", text: "Drag your face to avoid the bugs (🐛)!\nPC: Mouse | Mobile: Drag." },
+            typing: { title: "TERMINAL TYCOON", text: "Type the keywords shown on screen.\nKeyboard Required." },
+            clicker: { title: "DEV CLICKER", text: "Tap the face at the bottom to generate code!\nTime Limit: 60s." },
+            blaster: { title: "BIT BLASTER", text: "Drag ship to shoot bugs & asteroids.\nAuto-fire enabled." }
+        };
+
+        // --- NAVIGATION ---
+        function openArcade() { els.overlay.classList.add('active'); }
+        function closeArcade() { exitGame(); els.overlay.classList.remove('active'); }
+
+        function prepareGame(type) {
+            state.type = type;
+            els.menu.style.display = 'none';
+            els.window.style.display = 'flex';
+            els.canvas.innerHTML = ''; 
+            els.gameOver.style.display = 'none';
+            
+            const data = INSTRUCTIONS[type];
+            els.briefTitle.innerText = data.title;
+            els.briefText.innerText = data.text;
+            els.briefing.style.display = 'flex';
         }
 
-        function closeArcade() {
-            if(gameWindow.style.display === 'flex') exitGame();
-            arcadeOverlay.classList.remove('active');
+        function launchGame() {
+            els.briefing.style.display = 'none';
+            els.gameOver.style.display = 'none';
+            state.score = 0;
+            state.running = true;
+            els.stats.innerText = "Score: 0";
+            
+            // Clear prev canvas
+            els.canvas.innerHTML = '';
+
+            if(state.type === 'whack') initWhack();
+            else if(state.type === 'typing') initTyping();
+            else if(state.type === 'clicker') initClicker();
+            else {
+                const c = document.createElement('canvas');
+                c.width = els.canvas.clientWidth;
+                c.height = els.canvas.clientHeight;
+                els.canvas.appendChild(c);
+                const ctx = c.getContext('2d');
+                if(state.type === 'snake') initSnake(c, ctx);
+                if(state.type === 'dodge') initDodge(c, ctx);
+                if(state.type === 'blaster') initBlaster(c, ctx);
+                if(state.type === 'flappy') initFlappy(c, ctx);
+            }
         }
 
-        function startGame(gameType) {
-            gameMenu.style.display = 'none';
-            gameWindow.style.display = 'flex';
-            canvasArea.innerHTML = ''; // Clear previous game
-            score = 0;
-            statsDisplay.innerText = "Score: 0";
-
-            // Load specific game logic
-            if (gameType === 'whack') initWhackAHakkan();
-            if (gameType === 'clicker') initDevClicker();
-            if (gameType === 'reflex') initReflex();
-            if (gameType === 'memory') initMemory();
-            if (gameType === 'dodge') initDodge();
+        function showGameOver() {
+            state.running = false;
+            if(state.interval) clearInterval(state.interval);
+            if(state.timer) clearInterval(state.timer);
+            if(state.loop) cancelAnimationFrame(state.loop);
+            
+            els.finalScore.innerText = "Final Score: " + state.score;
+            els.gameOver.style.display = 'flex';
         }
 
         function exitGame() {
-            if (activeGameInterval) clearInterval(activeGameInterval);
-            gameWindow.style.display = 'none';
-            gameMenu.style.display = 'grid';
-            canvasArea.innerHTML = '';
+            state.running = false;
+            if(state.interval) clearInterval(state.interval);
+            if(state.timer) clearInterval(state.timer);
+            if(state.loop) cancelAnimationFrame(state.loop);
+            els.canvas.innerHTML = '';
+            els.window.style.display = 'none';
+            els.menu.style.display = 'grid';
+            els.briefing.style.display = 'none';
+            els.gameOver.style.display = 'none';
         }
 
-        // --- GAME 1: WHACK-A-HAKKAN ---
-        function initWhackAHakkan() {
-            const grid = document.createElement('div');
-            grid.className = 'mole-grid';
-            for(let i=0; i<9; i++) {
-                const hole = document.createElement('div');
-                hole.className = 'hole';
-                const mole = document.createElement('div');
-                mole.className = 'mole';
-                mole.onclick = () => {
-                    if(!mole.classList.contains('up')) return;
-                    score++;
-                    statsDisplay.innerText = "Score: " + score;
-                    mole.classList.remove('up');
-                };
-                hole.appendChild(mole);
-                grid.appendChild(hole);
-            }
-            canvasArea.appendChild(grid);
+        // --- GAME 1: SNAKE (Hakkan Face Body) ---
+        function initSnake(c, ctx) {
+            const gs = 25; // Grid size
+            const cols = Math.floor(c.width/gs);
+            const rows = Math.floor(c.height/gs);
+            let snake = [{x:5,y:5}, {x:4,y:5}, {x:3,y:5}];
+            let dx=1, dy=0, food={x:10,y:10};
 
-            const moles = document.querySelectorAll('.mole');
-            activeGameInterval = setInterval(() => {
-                moles.forEach(m => m.classList.remove('up'));
-                const random = Math.floor(Math.random() * moles.length);
-                moles[random].classList.add('up');
-            }, 800);
-        }
+            document.addEventListener('keydown', e => {
+                if(e.key=='ArrowUp' && dy==0) {dx=0;dy=-1} if(e.key=='ArrowDown' && dy==0) {dx=0;dy=1}
+                if(e.key=='ArrowLeft' && dx==0) {dx=-1;dy=0} if(e.key=='ArrowRight' && dx==0) {dx=1;dy=0}
+            });
+            let tx=0, ty=0;
+            c.addEventListener('touchstart', e => { tx=e.changedTouches[0].screenX; ty=e.changedTouches[0].screenY; });
+            c.addEventListener('touchend', e => {
+                let dxT = e.changedTouches[0].screenX - tx, dyT = e.changedTouches[0].screenY - ty;
+                if(Math.abs(dxT) > Math.abs(dyT)) { if(dxT>0 && dx==0) {dx=1;dy=0} else if(dxT<0 && dx==0) {dx=-1;dy=0} }
+                else { if(dyT>0 && dy==0) {dx=0;dy=1} else if(dyT<0 && dy==0) {dx=0;dy=-1} }
+            });
 
-        // --- GAME 2: DEV TYCOON (CLICKER) ---
-        function initDevClicker() {
-            canvasArea.style.display = 'flex';
-            canvasArea.style.justifyContent = 'center';
-            canvasArea.style.alignItems = 'center';
-
-            const face = document.createElement('div');
-            face.style.width = '150px';
-            face.style.height = '150px';
-            face.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
-            face.style.backgroundSize = 'cover';
-            face.style.borderRadius = '50%';
-            face.style.cursor = 'pointer';
-            face.style.boxShadow = '0 0 20px #0ff';
-            face.style.transition = '0.1s';
-
-            face.onclick = (e) => {
-                score += 1; // lines of code
-                statsDisplay.innerText = `Lines of Code: ${score}`;
-                face.style.transform = 'scale(0.95)';
-                setTimeout(() => face.style.transform = 'scale(1)', 50);
-
-                // Create floating text
-                const float = document.createElement('div');
-                float.innerText = "+1 LOC";
-                float.style.position = 'absolute';
-                float.style.color = '#0f0';
-                float.style.left = (e.clientX - canvasArea.getBoundingClientRect().left) + 'px';
-                float.style.top = (e.clientY - canvasArea.getBoundingClientRect().top) + 'px';
-                float.style.pointerEvents = 'none';
-                canvasArea.appendChild(float);
+            state.interval = setInterval(() => {
+                if(!state.running) return;
+                let head = {x:snake[0].x+dx, y:snake[0].y+dy};
                 
-                let op = 1;
-                let top = parseInt(float.style.top);
-                const anim = setInterval(() => {
-                    if (op <= 0.1) {
-                        clearInterval(anim);
-                        float.remove();
-                    }
-                    float.style.opacity = op;
-                    float.style.top = (top - 2) + 'px';
-                    op -= 0.1;
-                    top -= 2;
-                }, 50);
-            };
-            canvasArea.appendChild(face);
-        }
+                // Wall Collision
+                if(head.x<0 || head.x>=cols || head.y<0 || head.y>=rows) { showGameOver(); return; }
+                // Self Collision
+                for(let s of snake) if(s.x==head.x && s.y==head.y) { showGameOver(); return; }
 
-        // --- GAME 3: REFLEX TEST ---
-        function initReflex() {
-            canvasArea.style.display = 'flex';
-            canvasArea.style.justifyContent = 'center';
-            canvasArea.style.alignItems = 'center';
-            canvasArea.style.flexDirection = 'column';
+                snake.unshift(head);
+                if(head.x==food.x && head.y==food.y) {
+                    state.score+=10; els.stats.innerText="Score: "+state.score;
+                    food={x:Math.floor(Math.random()*cols), y:Math.floor(Math.random()*rows)};
+                } else snake.pop();
 
-            const msg = document.createElement('h2');
-            msg.innerText = "Wait for Green...";
-            msg.style.color = "white";
-            msg.style.fontFamily = "Orbitron";
+                ctx.clearRect(0,0,c.width,c.height);
+                
+                // Draw Food
+                ctx.font="20px Arial"; ctx.fillText("🍕", food.x*gs, food.y*gs+20);
 
-            const btn = document.createElement('div');
-            btn.style.width = '200px';
-            btn.style.height = '200px';
-            btn.style.background = 'red';
-            btn.style.borderRadius = '50%';
-            btn.style.marginTop = '20px';
-            btn.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
-            btn.style.backgroundSize = 'cover';
-            btn.style.filter = 'grayscale(100%)';
-            btn.style.cursor = 'pointer';
-
-            canvasArea.appendChild(msg);
-            canvasArea.appendChild(btn);
-
-            let startTime = 0;
-            let waiting = true;
-
-            function startRound() {
-                msg.innerText = "Wait for Green...";
-                btn.style.filter = 'grayscale(100%)';
-                btn.style.boxShadow = 'none';
-                waiting = true;
-
-                const delay = 1000 + Math.random() * 2000;
-                setTimeout(() => {
-                    if(!canvasArea.contains(btn)) return; // Ensure game didn't close
-                    waiting = false;
-                    btn.style.filter = 'none';
-                    btn.style.boxShadow = '0 0 50px #0f0';
-                    msg.innerText = "CLICK NOW!";
-                    msg.style.color = "#0f0";
-                    startTime = Date.now();
-                }, delay);
-            }
-
-            btn.onclick = () => {
-                if (waiting) {
-                    msg.innerText = "Too early! Retry.";
-                    msg.style.color = "red";
-                    setTimeout(startRound, 1000);
-                } else {
-                    const time = Date.now() - startTime;
-                    msg.innerText = `${time} ms!`;
-                    msg.style.color = "#0ff";
-                    waiting = true;
-                    setTimeout(startRound, 1500);
+                // Draw Snake (Using Hakkan Image for every segment)
+                for(let i=0; i<snake.length; i++) {
+                    let s = snake[i];
+                    ctx.save();
+                    ctx.beginPath();
+                    // Circular clip
+                    ctx.arc(s.x*gs + gs/2, s.y*gs + gs/2, gs/2 - 1, 0, Math.PI*2);
+                    ctx.clip();
+                    ctx.drawImage(hakkanImg, s.x*gs, s.y*gs, gs, gs);
+                    ctx.restore();
                 }
-            };
-
-            startRound();
+            }, 120);
         }
 
-        // --- GAME 4: MEMORY STACK ---
-        function initMemory() {
-            const icons = ['fa-react', 'fa-node', 'fa-js', 'fa-html5', 'fa-css3', 'fa-python'];
-            let cards = [...icons, ...icons]; // pairs
-            cards.sort(() => 0.5 - Math.random());
+        // --- GAME 2: DEV CLICKER (Face Bottom, Code Middle) ---
+        function initClicker() {
+            state.timeLeft = 60;
+            els.stats.innerText = "Time: 60s | Score: 0";
+            
+            const area = document.createElement('div'); area.className = 'clicker-area';
+            const faceCont = document.createElement('div'); faceCont.className = 'clicker-face-container';
+            const face = document.createElement('div'); face.className = 'clicker-face';
+            const codeZone = document.createElement('div'); codeZone.className = 'code-zone';
+            
+            faceCont.appendChild(face);
+            area.appendChild(codeZone);
+            area.appendChild(faceCont);
+            els.canvas.appendChild(area);
 
-            const grid = document.createElement('div');
-            grid.style.display = 'grid';
-            grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
-            grid.style.gap = '10px';
-            grid.style.padding = '20px';
-            grid.style.width = '100%';
-            grid.style.height = '100%';
-
-            let flipped = [];
-            let solved = 0;
-
-            cards.forEach(icon => {
-                const card = document.createElement('div');
-                card.style.background = '#222';
-                card.style.border = '1px solid #0ff';
-                card.style.display = 'flex';
-                card.style.justifyContent = 'center';
-                card.style.alignItems = 'center';
-                card.style.cursor = 'pointer';
-                card.style.fontSize = '2rem';
-                card.dataset.icon = icon;
-
-                const inner = document.createElement('i');
-                inner.className = `fab ${icon}`;
-                inner.style.display = 'none'; // Hidden initially
+            const tap = (e) => {
+                e.preventDefault();
+                if(!state.running) return;
+                state.score++; 
+                els.stats.innerText = `Time: ${state.timeLeft}s | Score: ${state.score}`;
+                face.style.transform='scale(0.9)'; setTimeout(()=>face.style.transform='scale(1)', 50);
                 
-                // Use Hakkan image as card back
-                const back = document.createElement('div');
-                back.style.width = '100%'; back.style.height = '100%';
-                back.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
-                back.style.backgroundSize = 'cover';
-                back.style.opacity = '0.5';
+                const code = CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
+                const el = document.createElement('div');
+                el.className = 'floating-code';
+                el.innerText = code;
                 
-                card.appendChild(back);
-                card.appendChild(inner);
+                // Randomize horizontal pos slightly
+                const randomX = Math.random() * 40 - 20; 
+                el.style.transform = `translateX(${randomX}px)`;
+                el.style.bottom = "150px"; // Start above face
+                
+                codeZone.appendChild(el);
+                setTimeout(() => el.remove(), 1500);
+            };
 
-                card.onclick = () => {
-                    if (flipped.length < 2 && !card.classList.contains('active')) {
-                        card.classList.add('active');
-                        back.style.display = 'none';
-                        inner.style.display = 'block';
-                        flipped.push(card);
+            face.addEventListener('mousedown', tap); 
+            face.addEventListener('touchstart', tap);
 
-                        if (flipped.length === 2) {
-                            setTimeout(() => {
-                                if (flipped[0].dataset.icon === flipped[1].dataset.icon) {
-                                    flipped[0].style.background = '#0f0';
-                                    flipped[1].style.background = '#0f0';
-                                    solved++;
-                                    if (solved === 6) statsDisplay.innerText = "YOU WIN!";
-                                } else {
-                                    flipped.forEach(c => {
-                                        c.classList.remove('active');
-                                        c.querySelector('i').style.display = 'none';
-                                        c.querySelector('div').style.display = 'block';
-                                    });
-                                }
-                                flipped = [];
-                            }, 800);
+            // Timer
+            state.timer = setInterval(() => {
+                state.timeLeft--;
+                els.stats.innerText = `Time: ${state.timeLeft}s | Score: ${state.score}`;
+                if(state.timeLeft <= 0) showGameOver();
+            }, 1000);
+        }
+
+        // --- GAME 3: WHACK-A-HAKKAN (With Timer) ---
+        function initWhack() {
+            state.timeLeft = 60;
+            const grid = document.createElement('div'); grid.className = 'mole-grid';
+            let holes = [];
+            for(let i=0; i<9; i++) {
+                const hole = document.createElement('div'); hole.className = 'hole';
+                const mole = document.createElement('div'); mole.className = 'mole';
+                mole.addEventListener('mousedown', (e) => hitMole(e, mole));
+                mole.addEventListener('touchstart', (e) => { e.preventDefault(); hitMole(e, mole); });
+                hole.appendChild(mole); grid.appendChild(hole); holes.push(mole);
+            }
+            els.canvas.appendChild(grid);
+
+            const hitMole = (e, mole) => {
+                if(mole.classList.contains('up')) {
+                    state.score++; els.stats.innerText = `Time: ${state.timeLeft}s | Score: ${state.score}`;
+                    mole.classList.remove('up');
+                }
+            }
+            const popMole = () => {
+                if(!state.running) return;
+                const idx = Math.floor(Math.random() * holes.length);
+                holes[idx].classList.add('up');
+                setTimeout(() => { holes[idx].classList.remove('up'); if(state.running) setTimeout(popMole, 500 + Math.random()*500); }, 700);
+            };
+            popMole();
+
+            state.timer = setInterval(() => {
+                state.timeLeft--;
+                els.stats.innerText = `Time: ${state.timeLeft}s | Score: ${state.score}`;
+                if(state.timeLeft <= 0) showGameOver();
+            }, 1000);
+        }
+
+        // --- GAME 4: FLAPPY HAKKAN ---
+        function initFlappy(c, ctx) {
+            let bird = { x: 50, y: c.height/2, r: 20, vel: 0 };
+            let pipes = [];
+            let frame = 0;
+            const gravity = 0.4; const lift = -7; const gap = 180;
+
+            const jump = (e) => { e.preventDefault(); if(state.running) bird.vel = lift; };
+            c.addEventListener('mousedown', jump); c.addEventListener('touchstart', jump);
+
+            const loop = () => {
+                if(!state.running) return;
+                ctx.clearRect(0,0,c.width,c.height);
+                bird.vel += gravity; bird.y += bird.vel;
+
+                // Draw Hakkan
+                ctx.save(); ctx.beginPath(); ctx.arc(bird.x, bird.y, bird.r, 0, Math.PI*2); ctx.clip();
+                ctx.drawImage(hakkanImg, bird.x-bird.r, bird.y-bird.r, bird.r*2, bird.r*2); ctx.restore();
+
+                if(frame % 100 === 0) {
+                    let h = Math.random() * (c.height - gap - 100) + 50;
+                    pipes.push({ x: c.width, top: h, bottom: h + gap, passed: false });
+                }
+                for(let i=0; i<pipes.length; i++) {
+                    let p = pipes[i]; p.x -= 2.5;
+                    ctx.fillStyle = '#0f0'; ctx.fillRect(p.x, 0, 50, p.top); ctx.fillRect(p.x, p.bottom, 50, c.height - p.bottom);
+                    
+                    if(bird.x+bird.r > p.x && bird.x-bird.r < p.x+50) {
+                        if(bird.y-bird.r < p.top || bird.y+bird.r > p.bottom) { showGameOver(); return; }
+                    }
+                    if(p.x+50 < bird.x && !p.passed) { state.score++; els.stats.innerText="Score: "+state.score; p.passed=true; }
+                    if(p.x < -50) { pipes.splice(i, 1); i--; }
+                }
+                if(bird.y+bird.r > c.height || bird.y-bird.r < 0) { showGameOver(); return; }
+                frame++; state.loop = requestAnimationFrame(loop);
+            };
+            loop();
+        }
+
+        // --- GAME 5: BUG DODGER ---
+        function initDodge(c, ctx) {
+            let p = { x: c.width/2, y: c.height-60, size: 50 }; 
+            let enemies = [];
+            const move = (x) => p.x = Math.max(p.size/2, Math.min(c.width-p.size/2, x));
+            c.addEventListener('mousemove', e => move(e.offsetX));
+            c.addEventListener('touchmove', e => { e.preventDefault(); move(e.touches[0].clientX - c.getBoundingClientRect().left); });
+
+            const loop = () => {
+                if(!state.running) return;
+                ctx.clearRect(0,0,c.width,c.height);
+                if(Math.random() < 0.03) enemies.push({ x: Math.random()*(c.width-30), y:-30, type: Math.random()>0.5 ? '🐛' : '🐞' });
+
+                ctx.save(); ctx.beginPath(); ctx.arc(p.x, p.y, p.size/2, 0, Math.PI*2); ctx.clip();
+                ctx.drawImage(hakkanImg, p.x-p.size/2, p.y-p.size/2, p.size, p.size); ctx.restore();
+
+                ctx.font = "30px Arial"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+                for(let i=0; i<enemies.length; i++) {
+                    let e = enemies[i]; e.y += 5 + (state.score/500); ctx.fillText(e.type, e.x, e.y);
+                    if(Math.abs(e.x - p.x) < 30 && Math.abs(e.y - p.y) < 30) { showGameOver(); return; }
+                    if(e.y > c.height) { state.score += 10; els.stats.innerText = "Score: "+state.score; enemies.splice(i,1); i--; }
+                }
+                state.loop = requestAnimationFrame(loop);
+            }
+            loop();
+        }
+
+        // --- GAME 6: BIT BLASTER ---
+        function initBlaster(c, ctx) {
+            let ship = { x: c.width/2, y: c.height - 50, w: 30, h: 30 };
+            let bullets = []; let enemies = []; let frame = 0;
+            const moveShip = (x) => ship.x = Math.max(0, Math.min(c.width-ship.w, x-ship.w/2));
+            c.addEventListener('mousemove', e => moveShip(e.offsetX));
+            c.addEventListener('touchmove', e => { e.preventDefault(); moveShip(e.touches[0].clientX - c.getBoundingClientRect().left); });
+
+            const loop = () => {
+                if(!state.running) return;
+                ctx.clearRect(0, 0, c.width, c.height);
+                ctx.fillStyle = '#0ff'; ctx.beginPath(); ctx.moveTo(ship.x + 15, ship.y); ctx.lineTo(ship.x + 30, ship.y + 30); ctx.lineTo(ship.x, ship.y + 30); ctx.fill();
+                if(frame % 12 === 0) bullets.push({ x: ship.x + 15, y: ship.y, speed: 8 });
+                ctx.fillStyle = '#ff0';
+                for(let b of bullets) { b.y -= b.speed; ctx.fillRect(b.x - 2, b.y, 4, 10); }
+                if(frame % 30 === 0) enemies.push({ x: Math.random()*(c.width-30), y: -30, w: 30, h: 30, hp: 1, icon: Math.random()>0.5 ? '👾' : '🪨' });
+                ctx.font = "25px Arial";
+                for(let i=0; i<enemies.length; i++) {
+                    let e = enemies[i]; e.y += 3 + (state.score/200); ctx.fillText(e.icon, e.x, e.y+20);
+                    for(let j=0; j<bullets.length; j++) {
+                        let b = bullets[j];
+                        if(b.x > e.x && b.x < e.x + 30 && b.y < e.y + 30 && b.y > e.y) {
+                            state.score += 10; els.stats.innerText = "Score: "+state.score; enemies.splice(i, 1); i--; bullets.splice(j, 1); j--; break;
                         }
                     }
-                };
-                grid.appendChild(card);
-            });
-            canvasArea.appendChild(grid);
-        }
-
-        // --- GAME 5: BUG DODGE (Simple JS Collision) ---
-        function initDodge() {
-            canvasArea.style.position = 'relative';
-            
-            // Player
-            const player = document.createElement('div');
-            player.style.width = '50px'; player.style.height = '50px';
-            player.style.backgroundImage = "url('https://github.com/HakkanShah.png')";
-            player.style.backgroundSize = 'cover';
-            player.style.borderRadius = '50%';
-            player.style.position = 'absolute';
-            player.style.bottom = '10px';
-            player.style.left = '50%';
-            player.style.boxShadow = '0 0 15px #0ff';
-            player.style.transition = 'left 0.1s linear';
-            canvasArea.appendChild(player);
-
-            // Controls
-            let playerLeft = 50;
-            document.onkeydown = (e) => {
-                if(e.key === 'ArrowLeft' && playerLeft > 0) playerLeft -= 5;
-                if(e.key === 'ArrowRight' && playerLeft < 90) playerLeft += 5;
-                player.style.left = playerLeft + '%';
+                    if(e.y + 20 > ship.y && e.x < ship.x + 30 && e.x + 30 > ship.x) { showGameOver(); return; }
+                }
+                frame++; state.loop = requestAnimationFrame(loop);
             };
-
-            // Bugs
-            activeGameInterval = setInterval(() => {
-                const bug = document.createElement('div');
-                bug.className = 'fas fa-bug';
-                bug.style.position = 'absolute';
-                bug.style.top = '0px';
-                bug.style.left = Math.random() * 90 + '%';
-                bug.style.color = 'red';
-                bug.style.fontSize = '30px';
-                canvasArea.appendChild(bug);
-
-                let bugTop = 0;
-                const bugFall = setInterval(() => {
-                    if(!canvasArea.contains(bug)) { clearInterval(bugFall); return; }
-                    bugTop += 2;
-                    bug.style.top = bugTop + '%';
-
-                    // Check Collision
-                    const pRect = player.getBoundingClientRect();
-                    const bRect = bug.getBoundingClientRect();
-
-                    if( !(pRect.right < bRect.left || pRect.left > bRect.right || pRect.bottom < bRect.top || pRect.top > bRect.bottom) ) {
-                        clearInterval(activeGameInterval);
-                        clearInterval(bugFall);
-                        statsDisplay.innerText = "GAME OVER! Final Score: " + score;
-                        statsDisplay.style.color = 'red';
-                    }
-
-                    if (bugTop > 100) {
-                        score++;
-                        statsDisplay.innerText = "Score: " + score;
-                        bug.remove();
-                        clearInterval(bugFall);
-                    }
-                }, 20);
-            }, 800);
+            loop();
         }
 
+        // --- GAME 7: TYPING ---
+        function initTyping() {
+            const container = document.createElement('div'); container.id = 'typing-container';
+            const words = ['REACT', 'NODE', 'EXPRESS', 'MONGODB', 'NEXTJS', 'TYPESCRIPT', 'JAVASCRIPT', 'CSS', 'HTML', 'API', 'DEPLOY', 'GIT', 'DEBUG'];
+            let currentWord = '';
+            const wordDisplay = document.createElement('div'); wordDisplay.id = 'typing-word';
+            const input = document.createElement('input'); input.id = 'typing-input';
+            container.appendChild(wordDisplay); container.appendChild(input);
+            els.canvas.appendChild(container); input.focus();
+
+            const nextWord = () => { currentWord = words[Math.floor(Math.random() * words.length)]; wordDisplay.innerText = currentWord; input.value = ''; };
+            input.addEventListener('input', (e) => {
+                if(e.target.value.toUpperCase() === currentWord) {
+                    state.score++; els.stats.innerText = "Words: "+state.score;
+                    wordDisplay.style.color = '#0f0'; setTimeout(() => wordDisplay.style.color = '#f0f', 100); nextWord();
+                }
+            });
+            nextWord();
+        }
     </script>
 </body>
 </html>
